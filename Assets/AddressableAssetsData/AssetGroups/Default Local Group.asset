@@ -1,0 +1,115 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Default Local Group
+  m_EditorClassIdentifier: 
+  m_GroupName: Default Local Group
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 1d3de58c8ee0b6b4d9811cf25efd1ed5
+  m_SerializeEntries:
+  - m_GUID: 9ee5b1bd14e14704aad9b4b60117039c
+    m_Address: Assets/Images/back.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 64e5b41718b5c914987f6cd5a6f00987
+    m_Address: Prefabs/back.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8bdc93a977f936a4aaba450efc0f1fcf
+    m_Address: Assets/Images/ace.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: dd1020f552d020d478d9d1498e594728
+    m_Address: Assets/Images/ten.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 69f5a44991eafff49b59a4628b3379aa
+    m_Address: Assets/Images/five.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c3df25011b8e3d64c8a5c29b09147011
+    m_Address: Assets/Images/two.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: dee38f2cd211d6e49afc3a6cba8376d6
+    m_Address: Assets/Images/four.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4b18ae22d9926ae42a4711c347ca0fb0
+    m_Address: Assets/Images/queen.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 44d1bda35b3911143b8ec02584124362
+    m_Address: Assets/Images/eight.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 586f55c57266bc845aaad572e6cd729e
+    m_Address: Assets/Images/nine.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f8f3a2d73ad7fc9438b938906d548ebf
+    m_Address: Assets/Images/jack.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0ddfbdceeda6309448de74cf29e07220
+    m_Address: Assets/Images/king.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 25251d9decca42840830f2ea3e1a0a9c
+    m_Address: Assets/Images/three.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3f267e98d1a0256408199d6cbed1b4c7
+    m_Address: Assets/Images/seven.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 207f6eb200f76184d81c02922de9d380
+    m_Address: Assets/Images/six.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 50b807ac8774fda4687d466a8d096c72, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 0f294caddb357ec4785898bddb05b39f, type: 2}
+    - {fileID: 11400000, guid: 09455667591e01746b5f5d063892108f, type: 2}
