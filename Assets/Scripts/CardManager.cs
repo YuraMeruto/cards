@@ -32,15 +32,15 @@ public class CardManager
         Front,
         Back
     }
+    static Dictionary<int, Card> attached_cards = new Dictionary<int, Card>();
     static List<Card> attach_card = new List<Card>();
-    static List<Card> card_list = new List<Card>();
-    public static List<Card> CardList { get { return card_list; } }
     static Dictionary<int, Card> game_object_list = new Dictionary<int, Card>();
     public static Dictionary<int, Card> GameObjectList { get { return game_object_list; } set { game_object_list = value; } }
-
+    public static List<Card> AttachCard { get { return attach_card; } }
+    public static Dictionary<int,Card> AttachedCards { get { return attached_cards; } set { attached_cards = value; } }
     public static void instanceCards()
     {
-        card_list.Clear();
+        attached_cards.Clear();
         game_object_list.Clear();
         var instance_list = new List<Number>();
         // 出すカードの種類を決める
@@ -101,7 +101,6 @@ public class CardManager
                 var card = new Card();
                 card.ini(add_card_instance_list[0], instance, ShowStatus.Back);
                 add_card_instance_list.RemoveAt(0);
-                card_list.Add(card);
                 game_object_list.Add(instance.GetInstanceID(), card);
             }
         }
@@ -128,25 +127,51 @@ public class CardManager
         var card = GetCard(obj);
         attach_card.Add(card);
         ChangeCard(obj);
-        if (attach_card.Count != 2)
-        {
-            Debug.Log("タッチしている数が1なので返す");
-            return;
-        }
+    }
+
+    public static void resultCards()
+    {
+
         if (!isMatching())
         {
+            Debug.Log("違うので裏にします");
+            setAttachedCards();
             resetAttachMaching();
             return;
         }
+        removeAttachedCards();
         destoryAttachCards();
-        if(game_object_list.Count == 0)
+        if (game_object_list.Count == 0)
         {
             Debug.Log("再生産");
             instanceCards();
         }
     }
 
-    public static bool isAttached(GameObject obj)
+    public static void setAttachedCards()
+    {
+        foreach(var val in attach_card)
+        {
+            if(!attached_cards.ContainsKey(val.GameObject.GetInstanceID())) {
+                continue;
+            }
+            attached_cards.Add(val.GameObject.GetInstanceID(),val);
+        }
+    }
+
+    public static void removeAttachedCards()
+    {
+        foreach (var val in attach_card)
+        {
+            if (!attached_cards.ContainsKey(val.GameObject.GetInstanceID()))
+            {
+                continue;
+            }
+            attached_cards.Remove(val.GameObject.GetInstanceID());
+        }
+    }
+
+        public static bool isAttached(GameObject obj)
     {
         foreach(var val in attach_card)
         {

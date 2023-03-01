@@ -27,5 +27,11 @@ public class PlayerAction
     private void hitCard(GameObject obj)
     {
         CardManager.attachCard(obj);
+        if(CardManager.AttachCard.Count != 2)
+        {
+            return;
+        }
+        CardManager.resultCards();
+        EnemyManager.InstanceEnemyManager.updateSet(true);
     }
 }
