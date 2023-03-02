@@ -152,11 +152,15 @@ public class CardManager
     {
         foreach(var val in attach_card)
         {
-            if(!attached_cards.ContainsKey(val.GameObject.GetInstanceID())) {
+            Debug.Log("setAttachedCards"+"::::"+attached_cards.ContainsKey(val.GameObject.GetInstanceID()));
+            if(attached_cards.ContainsKey(val.GameObject.GetInstanceID())) {
                 continue;
             }
+            Debug.Log("setAttachedCards");
             attached_cards.Add(val.GameObject.GetInstanceID(),val);
         }
+        Debug.Log(attached_cards.Count);
+        Debug.Log("setAttachedCards");
     }
 
     public static void removeAttachedCards()

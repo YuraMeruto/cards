@@ -21,12 +21,12 @@ public class EnemyAction
         {
             return;
         }
-        Debug.Log("更新します");
+        Debug.Log("更新します"+CardManager.AttachedCards.Count);
         Debug.Log(action_type);
         update_time = 2.0f;
         if (action_type == EnemyManager.ActionType.None)
         {
-            Debug.Log("dicideAction");
+            Debug.Log("dicideアクション");
             dicideAction();
         }
         else if (action_type == EnemyManager.ActionType.Pear)
@@ -66,9 +66,12 @@ public class EnemyAction
             var number = CardManager.GameObjectList.Count;
             var rnd = new System.Random();
             var rnd_target = CardManager.GameObjectList.ElementAt(rnd.Next(0, CardManager.GameObjectList.Count));
-            Debug.Log(CardManager.AttachCard.Count);
+            Debug.Log("randomCard_START");
+            Debug.Log(CardManager.AttachedCards.Count);
             Debug.Log(CardManager.GameObjectList[rnd_target.Key].GameObject.GetInstanceID());
-            if(CardManager.AttachCard.Count == 0 || CardManager.AttachCard[0].GameObject.GetInstanceID() != CardManager.GameObjectList[rnd_target.Key].GameObject.GetInstanceID()) {
+            Debug.Log("randomCard_END");
+
+            if (CardManager.AttachedCards.Count == 0 || CardManager.AttachCard.Count == 0 || CardManager.AttachCard[0].GameObject.GetInstanceID() != CardManager.GameObjectList[rnd_target.Key].GameObject.GetInstanceID()) {
                 target = CardManager.GameObjectList[rnd_target.Key].GameObject;
                 break;
             }
@@ -81,6 +84,7 @@ public class EnemyAction
     {
         if (action_type == EnemyManager.ActionType.None)
         {
+            Debug.Log("索敵アクション");
             var target = searchPearCards();
             if(target != null)
             {
@@ -99,18 +103,23 @@ public class EnemyAction
 
     private Card searchPearCards()
     {
+        Debug.Log("searchPearCards");
         Dictionary<CardManager.Number, Card> c = new Dictionary<CardManager.Number, Card>();
+        Debug.Log(CardManager.AttachedCards.Count);
         foreach (var val in CardManager.AttachedCards)
         {
             var i = 0;
             foreach (var v in CardManager.AttachedCards) {
+                Debug.Log(v.Value.CardType +":" + val.Value.CardType);
                 if (v.Value.CardType == val.Value.CardType)
                 {
                     i++;
                 }
                 if(i == 2)
                 {
+                    Debug.Log("i+2");
                     pear_card = val.Value;
+                    Debug.Log("debugaaaa");
                     return v.Value;
                 }
             }
