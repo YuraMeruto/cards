@@ -107,6 +107,11 @@ MonoBehaviour:
     m_SerializedLabels:
     - default
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ab965a9bdd200ca418d44a8639336789
+    m_Address: Assets/Prefabs/HP.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 50b807ac8774fda4687d466a8d096c72, type: 2}
   m_SchemaSet:

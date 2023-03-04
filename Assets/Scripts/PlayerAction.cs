@@ -4,9 +4,16 @@ using UnityEngine;
 using UnityEngine.AddressableAssets;
 public class PlayerAction
 {
+    bool is_update = true;
+
+    public bool IsUpdate { get { return is_update; } set { is_update = value; } }
 
     public void Update()
     {
+        if (!is_update)
+        {
+            return;
+        }
         if (Input.GetMouseButtonDown(0))
         {
             GameObject clickedGameObject = null;
@@ -31,7 +38,26 @@ public class PlayerAction
         {
             return;
         }
-        CardManager.resultCards();
+        if (CardManager.isMatching())
+        {
+            // バトル計算
+            var hp = BattleCalucation.ResultCalucation(CardManager.AttachCard[0].CardType,UIManager.Instance.EnemyStatus.HP);
+            if(hp <= 0)
+            {
+                hp = 0;
+            }
+            UIManager.Instance.EnemyStatus.HP = hp;
+            UIManager.Instance.EnemyStatus.Text.text = hp.ToString();
+            // 連続でドロー
+            CardManager.sucssesMatching();
+            if (BattleCalucation.isFinish())
+            {
+                UIManager.Instance.Finish(true);
+            }
+            return;
+        }
+        CardManager.failureMatching();
         EnemyManager.InstanceEnemyManager.updateSet(true);
+        is_update = false;
     }
 }

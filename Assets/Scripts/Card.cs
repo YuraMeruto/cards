@@ -16,9 +16,9 @@ public class Card
     public void ini(CardManager.Number num,GameObject obj,CardManager.ShowStatus showStatus)
     {
         number = num;
+        sprite_render = obj.GetComponent<SpriteRenderer>();
         game_obj = obj;
         show_status = showStatus;
-        sprite_render = obj.GetComponent<SpriteRenderer>();
     }
 
     public void changeShowStatus()
@@ -36,6 +36,7 @@ public class Card
         }
 
         // カードのオブジェクト生成
+        Debug.Log("load_sprite_name::"+load_sprite_name);
         var load_sprite = Addressables.LoadAssetAsync<Sprite>(load_sprite_name);
 
         // 非同期での処理について終了を待つ

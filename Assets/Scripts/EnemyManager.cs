@@ -14,7 +14,7 @@ public class EnemyManager : UpdateBase
     EnemyAction enemy_action = new EnemyAction();
     static EnemyManager enemyManager;
     public static EnemyManager InstanceEnemyManager { get { return enemyManager; } }
-    EnemyAction EnemyAction { get { return enemy_action; } set { enemy_action = value; } }
+    public EnemyAction EnemyAction { get { return enemy_action; } set { enemy_action = value; } }
     public void Ini()
     {
         enemyManager = this;

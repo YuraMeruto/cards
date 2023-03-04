@@ -129,16 +129,25 @@ public class CardManager
         ChangeCard(obj);
     }
 
-    public static void resultCards()
+    public static bool resultCards()
     {
 
         if (!isMatching())
         {
             Debug.Log("ˆá‚¤‚Ì‚Å— ‚É‚µ‚Ü‚·");
-            setAttachedCards();
-            resetAttachMaching();
-            return;
+            return false;
         }
+        return true;
+    }
+
+    public static void failureMatching()
+    {
+        setAttachedCards();
+        resetAttachMaching();
+    }
+
+    public static void sucssesMatching()
+    {
         removeAttachedCards();
         destoryAttachCards();
         if (game_object_list.Count == 0)
@@ -152,15 +161,11 @@ public class CardManager
     {
         foreach(var val in attach_card)
         {
-            Debug.Log("setAttachedCards"+"::::"+attached_cards.ContainsKey(val.GameObject.GetInstanceID()));
             if(attached_cards.ContainsKey(val.GameObject.GetInstanceID())) {
                 continue;
             }
-            Debug.Log("setAttachedCards");
             attached_cards.Add(val.GameObject.GetInstanceID(),val);
         }
-        Debug.Log(attached_cards.Count);
-        Debug.Log("setAttachedCards");
     }
 
     public static void removeAttachedCards()

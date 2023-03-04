@@ -49,8 +49,25 @@ public class EnemyAction
         }
         Debug.Log("敵更新リセット");
         action_type = EnemyManager.ActionType.None;
-        CardManager.resultCards();
+        if (CardManager.isMatching())
+        {
+            // バトル計算
+            var hp = BattleCalucation.ResultCalucation(CardManager.AttachCard[0].CardType, UIManager.Instance.PlayerStatus.HP);
+            UIManager.Instance.PlayerStatus.HP = hp;
+            UIManager.Instance.PlayerStatus.Text.text = hp.ToString();
+            // 連続でドロー
+            CardManager.sucssesMatching();
+            Debug.Log("isFinish"+ BattleCalucation.isFinish());
+            if (BattleCalucation.isFinish())
+            {
+                UIManager.Instance.Finish(false);
+            }
+
+            return;
+        }
+        CardManager.failureMatching();
         is_update = false;
+        PlayerManager.InstancePlayerManger.PlayerAction.IsUpdate = true;
     }
 
     private void searchCard()

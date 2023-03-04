@@ -41,5 +41,8 @@ public class GameMaster : MonoBehaviour
         EnemyManager enemy_manger = new EnemyManager();
         enemy_manger.Ini();
         update_list.Add(enemy_manger);
+
+        UIManager ui = new UIManager();
+        ui.Ini();
     }
 }
