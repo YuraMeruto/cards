@@ -12,6 +12,10 @@ public class EnemyAction
     float update_time = 2.0f;
     public void Update()
     {
+        if(TurnManager.TurnStatus != TurnManager.Turn.Enemy)
+        {
+            return;
+        }
         if (!is_update)
         {
             return;
@@ -65,9 +69,8 @@ public class EnemyAction
 
             return;
         }
-        CardManager.failureMatching();
         is_update = false;
-        PlayerManager.InstancePlayerManger.PlayerAction.IsUpdate = true;
+        ActionTimeManger.Instance.StartWaitCardTime();
     }
 
     private void searchCard()

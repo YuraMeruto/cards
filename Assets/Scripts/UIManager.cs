@@ -35,12 +35,16 @@ public class UIManager
 
     public void Finish(bool is_win_player)
     {
-        if (is_win_player) {
+        if (is_win_player)
+        {
             finish_text.text = "Win";
             finish_text.color = Color.red;
         }
-        finish_text.text = "Lose";
-        finish_text.color = Color.blue;
+        else
+        {
+            finish_text.text = "Lose";
+            finish_text.color = Color.blue;
+        }
         EnemyManager.InstanceEnemyManager.EnemyAction.IsUpdate = false;
         PlayerManager.InstancePlayerManger.PlayerAction.IsUpdate = false;
     }

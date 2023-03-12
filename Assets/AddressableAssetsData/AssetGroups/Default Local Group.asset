@@ -110,7 +110,26 @@ MonoBehaviour:
   - m_GUID: ab965a9bdd200ca418d44a8639336789
     m_Address: Assets/Prefabs/HP.prefab
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - default
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: da271f1dd85b9b54891ec544c99952c0
+    m_Address: abs/StartCountText.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a652e7a9155af4942bd3eefba48b567f
+    m_Address: Assets/Prefabs/playableIcon.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 98a279e535e877a49bb0cb5484d9cbbb
+    m_Address: Assets/Prefabs/goal_line.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
     FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 50b807ac8774fda4687d466a8d096c72, type: 2}

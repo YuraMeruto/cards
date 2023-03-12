@@ -21,5 +21,7 @@ public class AddressablesNames
 
 
     public const string UI_HP_TEXT = "Assets/Prefabs/HP.prefab";
-
+    public const string UI_START_COUNT_TEXT = "Assets/Prefabs/StartCountText.prefab";
+    public const string GOAL_LINE = "Assets/Prefabs/goal_line.prefab";
+    public const string PLAYABLE_CHARACTER = "Assets/Prefabs/playableIcon.prefab";
 }

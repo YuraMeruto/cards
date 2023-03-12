@@ -8,4 +8,31 @@ public class Utill
     {
         Debug.Log("Hoge");
     }
+
+    public static Vector3 FowardObj(Vector3 pos,bool is_enemy)
+    {
+        var p = pos;
+        var add = Time.deltaTime * 4.0f;
+        if (!is_enemy)
+        {
+            p.x += add;
+        }
+        else
+        {
+            p.x -= add;
+
+        }
+        return p;
+
+    }
+
+    public static bool IsGoalPos(GameObject obj,GameObject goal_obj,bool is_enemy)
+    {
+        if (is_enemy) {
+            return goal_obj.transform.position.x >= obj.transform.position.x;
+//            return Mathf.Abs(obj.transform.position.x) - goal_obj.transform.position.x <= 0;
+        }
+        return obj.transform.position.x >= goal_obj.transform.position.x;
+        //       return obj.transform.position.x - Mathf.Abs(goal_obj.transform.position.x) >= 0;
+    }
 }

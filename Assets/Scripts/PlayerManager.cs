@@ -19,5 +19,8 @@ public class PlayerManager : UpdateBase
         player_action.Update();
     }
 
-
+    public void updateSet(bool value)
+    {
+        InstancePlayerManger.player_action.IsUpdate = value;
+    }
 }

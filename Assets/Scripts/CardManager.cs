@@ -82,6 +82,7 @@ public class CardManager
         var instance_line = INSTANT_COUNT / 2;
         var instance_column = 2;
         // カード生成
+        var instance_pos = Camera.main.ViewportToScreenPoint(new Vector3(0, 0, 10));
         for (var index_column = 0; index_column < instance_column; index_column++) {
             top_pos += const_y;
             left_pos = const_x;
@@ -90,7 +91,7 @@ public class CardManager
                 left_pos += const_x;
                 var instance = MonoBehaviour.Instantiate(bulletPrefab);
 
-                instance.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(left_pos, top_pos, 10));
+                instance.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 10));
                 instance.gameObject.tag = TagManager.CARD;
                 /*
                 Debug.Log("画面の左下の座標は " + Camera.main.ScreenToWorldPoint(new Vector2(0, 0)));
@@ -102,6 +103,13 @@ public class CardManager
                 card.ini(add_card_instance_list[0], instance, ShowStatus.Back);
                 add_card_instance_list.RemoveAt(0);
                 game_object_list.Add(instance.GetInstanceID(), card);
+                // 配置移動のスクリプト
+                CardInstanceMove move = new CardInstanceMove();
+                var ran = UnityEngine.Random.RandomRange(0.5f,1.0f);
+                move.Ini(instance, Camera.main.ScreenToWorldPoint(new Vector3(left_pos, top_pos, 10)), ran);
+                GameMaster.GameMasterClass.animationUpdateList.Add(instance,move);
+                // プレハブが裏なので画像を変える
+                card.changeShowStatus();
             }
         }
     }

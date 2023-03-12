@@ -7,6 +7,8 @@ public class GameMaster : MonoBehaviour
     static GameObject game_master_obj;
     static GameMaster game_master;
     UpdateList update_list = new UpdateList();
+    AnimationUpdateList animation_update_list = new AnimationUpdateList();
+    public AnimationUpdateList animationUpdateList { get { return animation_update_list; } set { animation_update_list = value; ; } }
 
     public static GameObject GameMasterObj { get { return game_master_obj; } }
     public static GameMaster GameMasterClass { get { return game_master; } }
@@ -27,6 +29,7 @@ public class GameMaster : MonoBehaviour
     void Update()
     {
         update_list.Update();
+        animation_update_list.Update();
 //        Debug.Log("GameUpdate");
     }
 
@@ -44,5 +47,17 @@ public class GameMaster : MonoBehaviour
 
         UIManager ui = new UIManager();
         ui.Ini();
+
+        ActionTimeManger time_action_maneger = new ActionTimeManger();
+        time_action_maneger.Ini();
+        update_list.Add(time_action_maneger);
+
+        TurnManager turn_manager = new TurnManager();
+        update_list.Add(turn_manager);
+        TurnManager.TurnStatus = TurnManager.Turn.Player;
+
+        PlayableCharacterManager playablemanager = new PlayableCharacterManager();
+        playablemanager.Ini();
+        update_list.Add(playablemanager);
     }
 }
