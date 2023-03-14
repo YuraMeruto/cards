@@ -7,9 +7,10 @@ public class PlayableCharacterIcon :PlayableCharacterIconBase
     bool is_update = true;
     public bool IsUpdate { get { return is_update; } set { is_update = value; } }
 
-    public void Ini(GameObject o)
+    public void Ini(GameObject o,float r_location)
     {
         game_object = o;
+        ReLocation = r_location;
 
     }
 

@@ -34,7 +34,7 @@ public class StartCountAnimation : AnimationUpdateBase
         }
         if (game_object.text == "0")
         {
-            GameMaster.GameMasterClass.animationUpdateList.addRemove(game_object.gameObject);
+            GameMaster.GameMasterClass.animationUpdateList.AddRemove(game_object.gameObject);
             game_object.gameObject.SetActive(false);
             PlayableCharacterManager.Instance.IsUpdate = true;
         }

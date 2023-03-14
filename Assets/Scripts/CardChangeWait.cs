@@ -30,7 +30,7 @@ public class CardChangeWait : AnimationUpdateBase
             is_finish = true;
             Debug.Log("hogehoge");
             CardManager.ChangeCard(game_obj);
-            GameMaster.GameMasterClass.animationUpdateList.addRemove(game_obj);
+            GameMaster.GameMasterClass.animationUpdateList.AddRemove(game_obj);
         }
     }
 }

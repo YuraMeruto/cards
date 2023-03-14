@@ -12,10 +12,6 @@ public class EnemyAction
     float update_time = 2.0f;
     public void Update()
     {
-        if(TurnManager.TurnStatus != TurnManager.Turn.Enemy)
-        {
-            return;
-        }
         if (!is_update)
         {
             return;
@@ -55,19 +51,7 @@ public class EnemyAction
         action_type = EnemyManager.ActionType.None;
         if (CardManager.isMatching())
         {
-            // バトル計算
-            var hp = BattleCalucation.ResultCalucation(CardManager.AttachCard[0].CardType, UIManager.Instance.PlayerStatus.HP);
-            UIManager.Instance.PlayerStatus.HP = hp;
-            UIManager.Instance.PlayerStatus.Text.text = hp.ToString();
-            // 連続でドロー
-            CardManager.sucssesMatching();
-            Debug.Log("isFinish"+ BattleCalucation.isFinish());
-            if (BattleCalucation.isFinish())
-            {
-                UIManager.Instance.Finish(false);
-            }
-
-            return;
+//            return;
         }
         is_update = false;
         ActionTimeManger.Instance.StartWaitCardTime();
@@ -86,17 +70,12 @@ public class EnemyAction
             var number = CardManager.GameObjectList.Count;
             var rnd = new System.Random();
             var rnd_target = CardManager.GameObjectList.ElementAt(rnd.Next(0, CardManager.GameObjectList.Count));
-            Debug.Log("randomCard_START");
-            Debug.Log(CardManager.AttachedCards.Count);
-            Debug.Log(CardManager.GameObjectList[rnd_target.Key].GameObject.GetInstanceID());
-            Debug.Log("randomCard_END");
 
             if (CardManager.AttachedCards.Count == 0 || CardManager.AttachCard.Count == 0 || CardManager.AttachCard[0].GameObject.GetInstanceID() != CardManager.GameObjectList[rnd_target.Key].GameObject.GetInstanceID()) {
                 target = CardManager.GameObjectList[rnd_target.Key].GameObject;
                 break;
             }
         }
-        Debug.Log("選びました");
         return target;
     }
 

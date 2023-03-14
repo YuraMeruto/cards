@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AddressablesNames 
+public class AddressablesNames
 {
+    // ‰æ‘œŠÖ˜A
     public const string BACK_SPRITE = "Assets/Images/back.png";
     public const string FRONT_ACE = "Assets/Images/ace.png";
     public const string FRONT_TWO = "Assets/Images/two.png";
@@ -20,6 +21,7 @@ public class AddressablesNames
     public const string FRONT_KING = "Assets/Images/king.png";
 
 
+    // prefabŠÖ˜A
     public const string UI_HP_TEXT = "Assets/Prefabs/HP.prefab";
     public const string UI_START_COUNT_TEXT = "Assets/Prefabs/StartCountText.prefab";
     public const string GOAL_LINE = "Assets/Prefabs/goal_line.prefab";

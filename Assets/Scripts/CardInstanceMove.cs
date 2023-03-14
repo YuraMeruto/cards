@@ -42,7 +42,7 @@ public class CardInstanceMove : AnimationUpdateBase
                 Debug.Log("hoge");
                 isMoving = false;
                 is_finish = true;
-                GameMaster.GameMasterClass.animationUpdateList.addRemove(gameObject);
+                GameMaster.GameMasterClass.animationUpdateList.AddRemove(gameObject);
 
                 return;
             }

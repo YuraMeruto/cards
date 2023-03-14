@@ -8,7 +8,6 @@ public class BattleCalucation : MonoBehaviour
     public static int ResultCalucation(CardManager.Number number, int remaining_hp)
     {
         remaining_hp = remaining_hp - ((int)number + 1);
-        Debug.Log("remaining_hp" + remaining_hp + "number" + (int)number + 1);
         return remaining_hp;
     }
 

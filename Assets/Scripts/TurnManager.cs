@@ -24,7 +24,7 @@ public class TurnManager : UpdateBase
         if (ActionTimeManger.Instance.WaitCardTime < 0.0f)
         {
             Debug.Log("ƒŠƒZƒbƒg");
-            ActionTimeManger.Instance.resetWaitCardTime();
+            ActionTimeManger.Instance.ResetWaitCardTime();
             CardResult();
 //            ChangeTurn();
         }
@@ -71,9 +71,11 @@ public class TurnManager : UpdateBase
             {
                 UIManager.Instance.Finish(false);
             }
-            return;
+//            return;
         }
         CardManager.failureMatching();
+        PlayableCharacterManager.Instance.Relocation();
+        EnemyManager.InstanceEnemyManager.updateSet(false);
     }
 
     private void PlayerResult()
@@ -92,11 +94,13 @@ public class TurnManager : UpdateBase
             CardManager.sucssesMatching();
             if (BattleCalucation.isFinish())
             {
-                Debug.Log("kokoko");
                 UIManager.Instance.Finish(true);
             }
-            return;
+//            return;
         }
         CardManager.failureMatching();
+        PlayableCharacterManager.Instance.Relocation();
+        PlayerManager.InstancePlayerManger.updateSet(false);
+
     }
 }

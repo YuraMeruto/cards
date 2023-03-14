@@ -13,6 +13,10 @@ public class PlayableCharacterManager : UpdateBase
     public bool IsUpdate { get { return is_update; } set { is_update = value; } }
     List<PlayableCharacterIconBase> player_goal_list = new List<PlayableCharacterIconBase>();
     List<PlayableCharacterIconBase> enemy_goal_list = new List<PlayableCharacterIconBase>();
+    List<PlayableCharacterIconBase> action_playable_list = new List<PlayableCharacterIconBase>();
+    Vector3 goal_pos = new Vector3();
+
+
     static PlayableCharacterManager playableCharacterManager;
     public static PlayableCharacterManager Instance { get { return playableCharacterManager; } }
     public void Add(GameObject obj, PlayableCharacterIconBase add)
@@ -29,7 +33,7 @@ public class PlayableCharacterManager : UpdateBase
         // 非同期での処理について終了を待つ
         var bulletPrefab = bulletPrefabHundle.WaitForCompletion();
         var instance = MonoBehaviour.Instantiate(bulletPrefab);
-        var goal_pos = new Vector3();
+        goal_pos = new Vector3();
         goal_pos.x = Screen.width / 2;
         goal_pos.y = Screen.height / 1.2f;
         goal_pos.z = 10;
@@ -48,7 +52,8 @@ public class PlayableCharacterManager : UpdateBase
         instance.transform.position = Camera.main.ScreenToWorldPoint(pos);
 
         PlayableCharacterIcon playable_player = new PlayableCharacterIcon();
-        playable_player.Ini(instance);
+        float r_location = 2;
+        playable_player.Ini(instance,r_location);
         playable_player.IsEnemy = false;
         Add(instance,playable_player);
 
@@ -58,7 +63,8 @@ public class PlayableCharacterManager : UpdateBase
         pos.z = 10;
         instance.transform.position = Camera.main.ScreenToWorldPoint(pos);
         PlayableCharacterIcon a = new PlayableCharacterIcon();
-        a.Ini(instance);
+        r_location = 6;
+        a.Ini(instance,6);
         a.IsEnemy = false;
         Add(instance, a);
 
@@ -75,7 +81,8 @@ public class PlayableCharacterManager : UpdateBase
         Debug.Log(convert);
 
         PlayableCharacterIcon e = new PlayableCharacterIcon();
-        e.Ini(instance);
+        r_location = 1.5f;
+        e.Ini(instance,r_location);
         e.IsEnemy = true;
         Add(instance, e);
 
@@ -128,12 +135,19 @@ public class PlayableCharacterManager : UpdateBase
             Debug.LogWarning("プレイヤーアクション");
             is_update = false;
             PlayerManager.InstancePlayerManger.updateSet(true);
+            TurnManager.TurnStatus = TurnManager.Turn.Player;
+
         }
         else if (enemy_goal_list.Count != 0)
         {
+            foreach (var val in enemy_goal_list)
+            {
+
+            }
             Debug.LogWarning("エネミーアクション");
             is_update = false;
             EnemyManager.InstanceEnemyManager.updateSet(true);
+            TurnManager.TurnStatus = TurnManager.Turn.Enemy;
         }
 
     }
@@ -142,4 +156,31 @@ public class PlayableCharacterManager : UpdateBase
     {
 
     }
+
+    // Relocation　再配置
+    public void Relocation()
+    {
+        foreach (var val in player_goal_list)
+        {
+            var pos = goal_pos;
+            pos.x = goal_pos.x / val.ReLocation;
+            pos.z = 10;
+            val.PlayableObject.transform.position = Camera.main.ScreenToWorldPoint(pos);
+
+        }
+        foreach (var val in enemy_goal_list)
+        {
+           var pos = goal_pos;
+            pos.x = goal_pos.x / val.ReLocation;
+            pos.z = 10;
+            val.PlayableObject.transform.position = Camera.main.ScreenToWorldPoint(pos);
+            var convert = val.PlayableObject.transform.position;
+            convert.x = -convert.x;
+            val.PlayableObject.transform.position = convert;
+        }
+        enemy_goal_list.Clear();
+        player_goal_list.Clear();
+        is_update = true;
+    }
+
 }
