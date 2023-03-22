@@ -32,17 +32,17 @@ public class EnemyAction
         else if (action_type == EnemyManager.ActionType.Pear)
         {
             Debug.Log("Pearアクション");
-            CardManager.attachCard(pear_card.GameObject);
+            CardManager.AttachCard(pear_card.GameObject);
             pear_card = null;
         }
         else if (action_type == EnemyManager.ActionType.Random)
         {
             Debug.Log("ランダムアクション");
             var rnd = randomCard();
-            CardManager.attachCard(rnd);
+            CardManager.AttachCard(rnd);
 
         }
-        if (CardManager.AttachCard.Count != 2)
+        if (CardManager.AttachCards.Count != 2)
         {
             Debug.Log("帰ります！－");
             return;
@@ -71,7 +71,7 @@ public class EnemyAction
             var rnd = new System.Random();
             var rnd_target = CardManager.GameObjectList.ElementAt(rnd.Next(0, CardManager.GameObjectList.Count));
 
-            if (CardManager.AttachedCards.Count == 0 || CardManager.AttachCard.Count == 0 || CardManager.AttachCard[0].GameObject.GetInstanceID() != CardManager.GameObjectList[rnd_target.Key].GameObject.GetInstanceID()) {
+            if (CardManager.AttachedCards.Count == 0 || CardManager.AttachCards.Count == 0 || CardManager.AttachCards[0].GameObject.GetInstanceID() != CardManager.GameObjectList[rnd_target.Key].GameObject.GetInstanceID()) {
                 target = CardManager.GameObjectList[rnd_target.Key].GameObject;
                 break;
             }
@@ -87,7 +87,7 @@ public class EnemyAction
             var target = searchPearCards();
             if(target != null)
             {
-                CardManager.attachCard(target.GameObject);
+                CardManager.AttachCard(target.GameObject);
                 action_type = EnemyManager.ActionType.Pear;
                 return;
             }
@@ -96,7 +96,7 @@ public class EnemyAction
         searchCard();
         var rnd = randomCard();
         action_type = EnemyManager.ActionType.Random;
-        CardManager.attachCard(rnd);
+        CardManager.AttachCard(rnd);
 
     }
 

@@ -20,7 +20,7 @@ public class GameMaster : MonoBehaviour
         Debug.Log("GameStart");
         game_master_obj = this.gameObject;
         game_master = this;
-        CardManager.instanceCards();
+        CardManager.InstanceCards();
         Utill.Hoge();
 
     }
@@ -55,9 +55,16 @@ public class GameMaster : MonoBehaviour
         TurnManager turn_manager = new TurnManager();
         update_list.Add(turn_manager);
         TurnManager.TurnStatus = TurnManager.Turn.Player;
+        turn_manager.Ini();
 
         PlayableCharacterManager playablemanager = new PlayableCharacterManager();
         playablemanager.Ini();
         update_list.Add(playablemanager);
+
+        TargetIconManager target_manager = new TargetIconManager();
+        target_manager.Ini();
+
+        BattleManager battle_manager = new BattleManager();
+        battle_manager.Ini();
     }
 }

@@ -36,9 +36,9 @@ public class CardManager
     static List<Card> attach_card = new List<Card>();
     static Dictionary<int, Card> game_object_list = new Dictionary<int, Card>();
     public static Dictionary<int, Card> GameObjectList { get { return game_object_list; } set { game_object_list = value; } }
-    public static List<Card> AttachCard { get { return attach_card; } }
+    public static List<Card> AttachCards { get { return attach_card; } }
     public static Dictionary<int,Card> AttachedCards { get { return attached_cards; } set { attached_cards = value; } }
-    public static void instanceCards()
+    public static void InstanceCards()
     {
         attached_cards.Clear();
         game_object_list.Clear();
@@ -93,14 +93,8 @@ public class CardManager
 
                 instance.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 10));
                 instance.gameObject.tag = TagManager.CARD;
-                /*
-                Debug.Log("画面の左下の座標は " + Camera.main.ScreenToWorldPoint(new Vector2(0, 0)));
-                Debug.Log("画面の左上の座標は " + Camera.main.ScreenToWorldPoint(new Vector2(0, Screen.height)));
-                Debug.Log("画面の右上の座標は " + Camera.main.ScreenToWorldPoint(new Vector2(Screen.width, Screen.height)));
-                Debug.Log("画面の右下の座標は " + Camera.main.ScreenToWorldPoint(new Vector2(Screen.width, 0)));
-                */
                 var card = new Card();
-                card.ini(add_card_instance_list[0], instance, ShowStatus.Back);
+                card.Ini(add_card_instance_list[0], instance, ShowStatus.Back);
                 add_card_instance_list.RemoveAt(0);
                 game_object_list.Add(instance.GetInstanceID(), card);
                 // 配置移動のスクリプト
@@ -109,17 +103,17 @@ public class CardManager
                 move.Ini(instance, Camera.main.ScreenToWorldPoint(new Vector3(left_pos, top_pos, 10)), ran);
                 GameMaster.GameMasterClass.animationUpdateList.Add(instance,move);
                 // プレハブが裏なので画像を変える
-                card.changeShowStatus();
+                card.ChangeShowStatus();
             }
         }
     }
 
     public static void ChangeCard(GameObject obj){
         var card = GetCard(obj);
-        card.changeShowStatus();
+        card.ChangeShowStatus();
     }
 
-    public static void attachCard(GameObject obj)
+    public static void AttachCard(GameObject obj)
     {
         Debug.Log(GetCard(obj).CardType);
         if (isAttached(obj))
@@ -156,12 +150,27 @@ public class CardManager
 
     public static void sucssesMatching()
     {
+        if (TurnManager.TurnStatus == TurnManager.Turn.Player)
+        {
+            var t = PlayableCharacterManager.Instance.getEnemyIconList()[0];
+            TargetIconManager.Instance.InstanceIcon(t.PlayableObject.gameObject.transform.position);
+            PlayerManager.InstancePlayerManger.PlayerAction.Status = PlayerAction.ActionStatus.TargetEnemy;
+            PlayerManager.InstancePlayerManger.PlayerAction.IsUpdate = true;
+            BattleManager.Instance.SetTargetPlayableCharacter(t.PlayableObject.gameObject);
+        }
+        else if (TurnManager.TurnStatus == TurnManager.Turn.Enemy)
+        {
+            var t = PlayableCharacterManager.Instance.getPlayerIconList()[0];
+            TargetIconManager.Instance.InstanceIcon(t.PlayableObject.gameObject.transform.position);
+
+        }
+        return;
         removeAttachedCards();
         destoryAttachCards();
         if (game_object_list.Count == 0)
         {
             Debug.Log("再生産");
-            instanceCards();
+            InstanceCards();
         }
     }
 
@@ -215,7 +224,7 @@ public class CardManager
     {
         foreach (var val in attach_card)
         {
-            val.changeShowStatus();
+            val.ChangeShowStatus();
         }
         attach_card.Clear();
     }

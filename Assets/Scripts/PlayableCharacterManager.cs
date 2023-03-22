@@ -16,6 +16,9 @@ public class PlayableCharacterManager : UpdateBase
     List<PlayableCharacterIconBase> action_playable_list = new List<PlayableCharacterIconBase>();
     Vector3 goal_pos = new Vector3();
 
+    public Dictionary<int, PlayableCharacterIconBase> PlayableIconList { get { return playable_character_list; } }
+    public List<PlayableCharacterIconBase> ActionPlayableList { get { return action_playable_list; } }
+
 
     static PlayableCharacterManager playableCharacterManager;
     public static PlayableCharacterManager Instance { get { return playableCharacterManager; } }
@@ -59,7 +62,7 @@ public class PlayableCharacterManager : UpdateBase
 
         instance = MonoBehaviour.Instantiate(bulletPrefab);
         pos = goal_pos;
-        pos.x = goal_pos.x / 6;
+        pos.x = goal_pos.x / 1.1f;
         pos.z = 10;
         instance.transform.position = Camera.main.ScreenToWorldPoint(pos);
         PlayableCharacterIcon a = new PlayableCharacterIcon();
@@ -70,21 +73,40 @@ public class PlayableCharacterManager : UpdateBase
 
         // 敵
         instance = MonoBehaviour.Instantiate(bulletPrefab);
+        instance.tag = TagManager.ENEMY;
         pos = goal_pos;
         pos.x = goal_pos.x / 1.3f;
         pos.z = 10;
         instance.transform.position = Camera.main.ScreenToWorldPoint(pos);
         Vector3 convert = instance.transform.position;
-        Debug.Log(convert);
         convert.x = -convert.x;
         instance.transform.position = convert;
-        Debug.Log(convert);
 
         PlayableCharacterIcon e = new PlayableCharacterIcon();
         r_location = 1.5f;
         e.Ini(instance,r_location);
         e.IsEnemy = true;
         Add(instance, e);
+
+
+        instance = MonoBehaviour.Instantiate(bulletPrefab);
+        instance.tag = TagManager.ENEMY;
+        pos = goal_pos;
+        pos.x = goal_pos.x / 3.3f;
+        pos.z = 10;
+        var screen_pos = Camera.main.ScreenToWorldPoint(pos);
+        screen_pos.y += -1;
+        instance.transform.position = screen_pos;
+        
+        convert = instance.transform.position;
+        convert.x = -convert.x;
+        instance.transform.position = convert;
+
+        PlayableCharacterIcon f = new PlayableCharacterIcon();
+        r_location = 1.5f;
+        f.Ini(instance, r_location);
+        f.IsEnemy = true;
+        Add(instance, f);
 
 
 
@@ -131,8 +153,14 @@ public class PlayableCharacterManager : UpdateBase
         // プレイヤーの行動
         else if (player_goal_list.Count != 0)
         {
+            foreach (var val in player_goal_list)
+            {
+                action_playable_list.Add(val);
+
+            }
             Debug.LogWarning(player_goal_list.Count + ":::" + enemy_goal_list.Count);
             Debug.LogWarning("プレイヤーアクション");
+            PlayerManager.InstancePlayerManger.PlayerAction.Status = PlayerAction.ActionStatus.CardSelect;
             is_update = false;
             PlayerManager.InstancePlayerManger.updateSet(true);
             TurnManager.TurnStatus = TurnManager.Turn.Player;
@@ -142,7 +170,7 @@ public class PlayableCharacterManager : UpdateBase
         {
             foreach (var val in enemy_goal_list)
             {
-
+                action_playable_list.Add(val);
             }
             Debug.LogWarning("エネミーアクション");
             is_update = false;
@@ -151,6 +179,38 @@ public class PlayableCharacterManager : UpdateBase
         }
 
     }
+
+    public List<PlayableCharacterIconBase> getEnemyIconList()
+    {
+        List<PlayableCharacterIconBase> l = new List<PlayableCharacterIconBase>();
+        foreach (var val in playable_character_list)
+        {
+            if (val.Value.IsEnemy)
+            {
+                l.Add(val.Value);
+            }
+        }
+        return l;
+    }
+
+    public List<PlayableCharacterIconBase> getPlayerIconList()
+    {
+        List<PlayableCharacterIconBase> l = new List<PlayableCharacterIconBase>();
+        foreach (var val in playable_character_list)
+        {
+            if (!val.Value.IsEnemy)
+            {
+                l.Add(val.Value);
+            }
+        }
+        return l;
+    }
+
+    public PlayableCharacterIconBase GetPlayable(GameObject obj)
+    {
+        return PlayableIconList[obj.GetInstanceID()];
+    }
+
 
     void DrawAction()
     {
@@ -180,6 +240,7 @@ public class PlayableCharacterManager : UpdateBase
         }
         enemy_goal_list.Clear();
         player_goal_list.Clear();
+        action_playable_list.Clear();
         is_update = true;
     }
 

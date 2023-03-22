@@ -24,6 +24,9 @@ public class Test : MonoBehaviour
     GameObject target2;
     void Start()
     {
+        var c = obj.GetComponent<SpriteRenderer>().color;
+        c.a = 0.5f;
+        obj.GetComponent<SpriteRenderer>().color = c;
         /*
 Debug.Log("画面の左下の座標は " + Camera.main.ScreenToWorldPoint(new Vector2(0, 0)));
 Debug.Log("画面の左上の座標は " + Camera.main.ScreenToWorldPoint(new Vector2(0, Screen.height)));
@@ -48,7 +51,9 @@ Debug.Log("画面の右下の座標は " + Camera.main.ScreenToWorldPoint(new Vector2(Scr
     }
     void Update()
     {
-        Debug.Log(Mathf.Abs(target.transform.position.x) -  Mathf.Abs(target2.transform.position.x));
+
+
+     //   Debug.Log(Mathf.Abs(target.transform.position.x) -  Mathf.Abs(target2.transform.position.x));
 
     }
 

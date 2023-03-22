@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public class AddressablesNames
 {
     // ‰æ‘œŠÖ˜A
@@ -26,4 +22,5 @@ public class AddressablesNames
     public const string UI_START_COUNT_TEXT = "Assets/Prefabs/StartCountText.prefab";
     public const string GOAL_LINE = "Assets/Prefabs/goal_line.prefab";
     public const string PLAYABLE_CHARACTER = "Assets/Prefabs/playableIcon.prefab";
+    public const string TARGET_ICON_LIST = "Assets/Prefabs/target_icon.prefab";
 }

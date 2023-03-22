@@ -16,7 +16,7 @@ public class CardInstanceMove : AnimationUpdateBase
     Quaternion postrotation;        // ‰ñ“]ŒãŠp“x
     bool isMoving = true;
 
-    public void Ini(GameObject obj,Vector3 pos,float m_time)
+    public void Ini(GameObject obj, Vector3 pos, float m_time)
     {
         gameObject = obj;
         Transform transform = obj.GetComponent<Transform>();
@@ -25,7 +25,7 @@ public class CardInstanceMove : AnimationUpdateBase
         prerotation = transform.localRotation;  // ‰ñ“]‘OˆÊ’u
         postrotation = Quaternion.Euler(prerotation.eulerAngles.x, prerotation.eulerAngles.y + 720f, prerotation.eulerAngles.z); // ‰ñ“]ŒãˆÊ’u(yŽ²‚ð180“x‰ñ“])
         move_time = m_time;
-        CardInstanceMoveList.cardInstanceMoves.Add(obj.GetInstanceID(),this);
+        CardInstanceMoveList.cardInstanceMoves.Add(obj.GetInstanceID(), this);
     }
 
     public override void Update()
@@ -39,7 +39,6 @@ public class CardInstanceMove : AnimationUpdateBase
         {
             if (gameObject.transform.position == postposition)
             {
-                Debug.Log("hoge");
                 isMoving = false;
                 is_finish = true;
                 GameMaster.GameMasterClass.animationUpdateList.AddRemove(gameObject);
@@ -57,9 +56,9 @@ public class CardInstanceMove : AnimationUpdateBase
     public override void Finish()
     {
         CardChangeWait wait = new CardChangeWait();
-        wait.Ini(3,gameObject);
-        CardInstanceMoveList.remove(gameObject);
-        GameMaster.GameMasterClass.animationUpdateList.Add(gameObject,wait);
+        wait.Ini(3, gameObject);
+        CardInstanceMoveList.Remove(gameObject);
+        GameMaster.GameMasterClass.animationUpdateList.Add(gameObject, wait);
     }
 
 }

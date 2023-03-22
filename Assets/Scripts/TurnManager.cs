@@ -57,8 +57,10 @@ public class TurnManager : UpdateBase
     {
         if (CardManager.isMatching())
         {
+            CardManager.sucssesMatching();
+            return;
             // バトル計算
-            var hp = BattleCalucation.ResultCalucation(CardManager.AttachCard[0].CardType, UIManager.Instance.PlayerStatus.HP);
+            var hp = BattleCalucation.ResultCalucation(CardManager.AttachCards[0].CardType, UIManager.Instance.PlayerStatus.HP);
             if (hp <= 0)
             {
                 hp = 0;
@@ -66,8 +68,7 @@ public class TurnManager : UpdateBase
             UIManager.Instance.PlayerStatus.HP = hp;
             UIManager.Instance.PlayerStatus.Text.text = hp.ToString();
             // 連続でドロー
-            CardManager.sucssesMatching();
-            if (BattleCalucation.isFinish())
+            if (BattleCalucation.IsFinish())
             {
                 UIManager.Instance.Finish(false);
             }
@@ -82,25 +83,33 @@ public class TurnManager : UpdateBase
     {
         if (CardManager.isMatching())
         {
-            // バトル計算
-            var hp = BattleCalucation.ResultCalucation(CardManager.AttachCard[0].CardType, UIManager.Instance.EnemyStatus.HP);
-            if (hp <= 0)
-            {
-                hp = 0;
-            }
-            UIManager.Instance.EnemyStatus.HP = hp;
-            UIManager.Instance.EnemyStatus.Text.text = hp.ToString();
-            // 連続でドロー
             CardManager.sucssesMatching();
-            if (BattleCalucation.isFinish())
-            {
-                UIManager.Instance.Finish(true);
-            }
-//            return;
+            return;
         }
         CardManager.failureMatching();
         PlayableCharacterManager.Instance.Relocation();
         PlayerManager.InstancePlayerManger.updateSet(false);
 
+    }
+
+    public void PlayerBattle()
+    {
+        // バトル計算
+        var hp = BattleCalucation.ResultCalucation(CardManager.AttachCards[0].CardType, UIManager.Instance.EnemyStatus.HP);
+        if (hp <= 0)
+        {
+            hp = 0;
+        }
+        UIManager.Instance.EnemyStatus.HP = hp;
+        UIManager.Instance.EnemyStatus.Text.text = hp.ToString();
+        // 連続でドロー
+        if (BattleCalucation.IsFinish())
+        {
+            UIManager.Instance.Finish(true);
+        }
+        CardManager.failureMatching();
+        PlayableCharacterManager.Instance.Relocation();
+        PlayerManager.InstancePlayerManger.updateSet(false);
+        TargetIconManager.Instance.IconDestory();
     }
 }

@@ -5,6 +5,14 @@ using UnityEngine.AddressableAssets;
 public class PlayerAction
 {
     bool is_update = false;
+    public enum ActionStatus
+    {
+        None,
+        CardSelect,
+        TargetEnemy,
+    }
+    ActionStatus action_satus = ActionStatus.None;
+    public ActionStatus Status { get { return action_satus; } set { action_satus = value; } }
 
     public bool IsUpdate { get { return is_update; } set { is_update = value; } }
 
@@ -27,22 +35,60 @@ public class PlayerAction
             if (hit2d)
             {
                 clickedGameObject = hit2d.transform.gameObject;
-                if (clickedGameObject.tag == TagManager.CARD)
+                switch (action_satus)
                 {
-                    hitCard(clickedGameObject);
+                    case ActionStatus.CardSelect:
+                        CardSelect(clickedGameObject);
+                        break;
+                    case ActionStatus.TargetEnemy:
+                        TargetEnemy(clickedGameObject);
+                        break;
                 }
             }
 
         }
     }
+
+    private void CardSelect(GameObject target)
+    {
+        if (target.tag == TagManager.CARD)
+        {
+            hitCard(target);
+        }
+    }
+
+    private void TargetEnemy(GameObject target)
+    {
+        Debug.Log(target.tag);
+        if (target.tag == TagManager.ENEMY)
+        {
+            if (IsBattleStart(target))
+            {
+                TurnManager.Instance.PlayerBattle();
+            }
+            BattleManager.Instance.SetTargetPlayableCharacter(target);
+            TargetIconManager.Instance.MoveTarget(target);
+        }
+    }
+
     private void hitCard(GameObject obj)
     {
-        CardManager.attachCard(obj);
-        if(CardManager.AttachCard.Count != 2)
+        CardManager.AttachCard(obj);
+        if (CardManager.AttachCards.Count != 2)
         {
             return;
         }
         is_update = false;
         ActionTimeManger.Instance.StartWaitCardTime();
+    }
+
+    private bool IsBattleStart(GameObject target)
+    {
+
+        if (BattleManager.Instance.Target.PlayableObject.GetInstanceID() != target.GetInstanceID())
+        {
+            return false;
+        }
+        return true;
     }
 }

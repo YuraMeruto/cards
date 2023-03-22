@@ -7,7 +7,7 @@ public class CardChangeWait : AnimationUpdateBase
     float wait_time = 0.0f;
     GameObject game_obj;
 
-    public void Ini(float time,GameObject obj)
+    public void Ini(float time, GameObject obj)
     {
         wait_time = time;
         game_obj = obj;

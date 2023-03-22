@@ -30,9 +30,13 @@ public class Utill
     {
         if (is_enemy) {
             return goal_obj.transform.position.x >= obj.transform.position.x;
-//            return Mathf.Abs(obj.transform.position.x) - goal_obj.transform.position.x <= 0;
         }
         return obj.transform.position.x >= goal_obj.transform.position.x;
-        //       return obj.transform.position.x - Mathf.Abs(goal_obj.transform.position.x) >= 0;
+    }
+
+    public static float BackPostionCalculation(PlayableCharacterIconBase attacker, PlayableCharacterIconBase attacked_side)
+    {
+        var back_value = attacker.BackAttack;
+        return back_value;
     }
 }

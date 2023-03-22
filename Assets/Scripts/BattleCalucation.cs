@@ -11,7 +11,7 @@ public class BattleCalucation : MonoBehaviour
         return remaining_hp;
     }
 
-    public static bool isFinish()
+    public static bool IsFinish()
     {
         if (UIManager.Instance.PlayerStatus.HP <= 0 || UIManager.Instance.EnemyStatus.HP <= 0)
         {

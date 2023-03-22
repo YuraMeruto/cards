@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
-public class Card 
+public class Card
 {
     CardManager.Number number;
     CardManager.ShowStatus show_status;
@@ -11,9 +11,9 @@ public class Card
     public CardManager.Number CardType { get { return number; } set { number = value; } }
     private GameObject game_obj;
 
-    public GameObject GameObject { get { return game_obj; }}
+    public GameObject GameObject { get { return game_obj; } }
 
-    public void ini(CardManager.Number num,GameObject obj,CardManager.ShowStatus showStatus)
+    public void Ini(CardManager.Number num, GameObject obj, CardManager.ShowStatus showStatus)
     {
         number = num;
         sprite_render = obj.GetComponent<SpriteRenderer>();
@@ -21,7 +21,7 @@ public class Card
         show_status = showStatus;
     }
 
-    public void changeShowStatus()
+    public void ChangeShowStatus()
     {
         var load_sprite_name = "";
         if (show_status == CardManager.ShowStatus.Front)
@@ -36,7 +36,6 @@ public class Card
         }
 
         // カードのオブジェクト生成
-        Debug.Log("load_sprite_name::"+load_sprite_name);
         var load_sprite = Addressables.LoadAssetAsync<Sprite>(load_sprite_name);
 
         // 非同期での処理について終了を待つ
