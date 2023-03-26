@@ -102,14 +102,16 @@ public class TurnManager : UpdateBase
         }
         UIManager.Instance.EnemyStatus.HP = hp;
         UIManager.Instance.EnemyStatus.Text.text = hp.ToString();
-        // òAë±Ç≈ÉhÉçÅ[
+        BattleManager.Instance.SetMovePlayableIcon();
         if (BattleCalucation.IsFinish())
         {
             UIManager.Instance.Finish(true);
         }
-        CardManager.failureMatching();
-        PlayableCharacterManager.Instance.Relocation();
-        PlayerManager.InstancePlayerManger.updateSet(false);
+        CardManager.resetDestoryAttachCards();
+//        CardManager.failureMatching();
+//        PlayableCharacterManager.Instance.Relocation();
+//        PlayerManager.InstancePlayerManger.updateSet(false);
         TargetIconManager.Instance.IconDestory();
+        BattleManager.Instance.Destorytaret();
     }
 }

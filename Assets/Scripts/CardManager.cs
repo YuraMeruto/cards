@@ -174,6 +174,17 @@ public class CardManager
         }
     }
 
+    public static void resetDestoryAttachCards()
+    {
+        removeAttachedCards();
+        destoryAttachCards();
+        if (game_object_list.Count == 0)
+        {
+            Debug.Log("Ä¶Y");
+            InstanceCards();
+        }
+    }
+
     public static void setAttachedCards()
     {
         foreach(var val in attach_card)

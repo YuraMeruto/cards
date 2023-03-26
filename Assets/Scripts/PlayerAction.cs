@@ -65,6 +65,8 @@ public class PlayerAction
             if (IsBattleStart(target))
             {
                 TurnManager.Instance.PlayerBattle();
+                Status = ActionStatus.CardSelect;
+                return;
             }
             BattleManager.Instance.SetTargetPlayableCharacter(target);
             TargetIconManager.Instance.MoveTarget(target);

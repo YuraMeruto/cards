@@ -37,6 +37,7 @@ public class Utill
     public static float BackPostionCalculation(PlayableCharacterIconBase attacker, PlayableCharacterIconBase attacked_side)
     {
         var back_value = attacker.BackAttack;
+        back_value *= 10;
         return back_value;
     }
 }

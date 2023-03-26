@@ -208,6 +208,8 @@ public class PlayableCharacterManager : UpdateBase
 
     public PlayableCharacterIconBase GetPlayable(GameObject obj)
     {
+        Debug.LogWarning(PlayableIconList.Count);
+        Debug.LogWarning(obj.GetInstanceID());
         return PlayableIconList[obj.GetInstanceID()];
     }
 

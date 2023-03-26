@@ -18,6 +18,7 @@ public class BattleManager
 
     public void SetTargetPlayableCharacter(GameObject obj)
     {
+
         target = PlayableCharacterManager.Instance.GetPlayable(obj);
         // çƒîzíuå„ÇÃèÍèäÇê∂ê¨
         if (target_back_space != null)
@@ -30,6 +31,7 @@ public class BattleManager
         target_back_space.GetComponent<SpriteRenderer>().color = c;
         var pos = target.PlayableObject.transform.position;
         var back_value = 0.0f;
+        MonoBehaviour.Destroy(target_back_space.GetComponent<BoxCollider2D>());
         foreach (var val in PlayableCharacterManager.Instance.ActionPlayableList)
         {
             back_value += Utill.BackPostionCalculation(val, target);
@@ -42,6 +44,21 @@ public class BattleManager
         target_back_space.transform.position = pos;
     }
 
+    public void SetMovePlayableIcon()
+    {
+        var back_value = 0.0f;
+        var pos = target.PlayableObject.gameObject.transform.position;
+        foreach (var val in PlayableCharacterManager.Instance.ActionPlayableList)
+        {
+            back_value += Utill.BackPostionCalculation(val, target);
+        }
+        if (!target.IsEnemy)
+        {
+            back_value = -back_value;
+        }
+        pos.x += back_value;
+        target.PlayableObject.gameObject.transform.position = pos;
+    }
 
     public void Destorytaret()
     {
