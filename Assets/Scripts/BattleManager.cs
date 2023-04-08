@@ -15,7 +15,10 @@ public class BattleManager
     {
         instance = this;
     }
-
+    public void SetTargetPlayableCharacter(PlayableCharacterIconBase obj)
+    {
+        SetTargetPlayableCharacter(obj.PlayableObject.transform.gameObject);
+    }
     public void SetTargetPlayableCharacter(GameObject obj)
     {
 
@@ -26,6 +29,7 @@ public class BattleManager
             MonoBehaviour.Destroy(target_back_space);
         }
         target_back_space = MonoBehaviour.Instantiate(target.PlayableObject);
+        target_back_space.name = "hogetarou";
         var c = target_back_space.GetComponent<SpriteRenderer>().color;
         c.a = c.a / 2;
         target_back_space.GetComponent<SpriteRenderer>().color = c;

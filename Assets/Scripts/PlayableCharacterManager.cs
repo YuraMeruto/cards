@@ -114,6 +114,7 @@ public class PlayableCharacterManager : UpdateBase
     }
     public override void Update()
     {
+        Debug.Log(is_update);
         if (!is_update)
         {
             return;
@@ -210,6 +211,8 @@ public class PlayableCharacterManager : UpdateBase
     {
         Debug.LogWarning(PlayableIconList.Count);
         Debug.LogWarning(obj.GetInstanceID());
+        Debug.LogWarning(obj.name);
+
         return PlayableIconList[obj.GetInstanceID()];
     }
 

@@ -40,4 +40,9 @@ public class Utill
         back_value *= 10;
         return back_value;
     }
+
+    public static float getDistanceFromGoalPos(GameObject goal_obj,GameObject obj) 
+    {
+       return  goal_obj.transform.position.x - obj.transform.position.x;
+    }
 }

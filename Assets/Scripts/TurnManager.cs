@@ -59,20 +59,6 @@ public class TurnManager : UpdateBase
         {
             CardManager.sucssesMatching();
             return;
-            // バトル計算
-            var hp = BattleCalucation.ResultCalucation(CardManager.AttachCards[0].CardType, UIManager.Instance.PlayerStatus.HP);
-            if (hp <= 0)
-            {
-                hp = 0;
-            }
-            UIManager.Instance.PlayerStatus.HP = hp;
-            UIManager.Instance.PlayerStatus.Text.text = hp.ToString();
-            // 連続でドロー
-            if (BattleCalucation.IsFinish())
-            {
-                UIManager.Instance.Finish(false);
-            }
-//            return;
         }
         CardManager.failureMatching();
         PlayableCharacterManager.Instance.Relocation();
@@ -113,5 +99,26 @@ public class TurnManager : UpdateBase
 //        PlayerManager.InstancePlayerManger.updateSet(false);
         TargetIconManager.Instance.IconDestory();
         BattleManager.Instance.Destorytaret();
+    }
+
+    public void EnemyBattle()
+    {
+        // バトル計算
+        var hp = BattleCalucation.ResultCalucation(CardManager.AttachCards[0].CardType, UIManager.Instance.PlayerStatus.HP);
+        if (hp <= 0)
+        {
+            hp = 0;
+        }
+        UIManager.Instance.PlayerStatus.HP = hp;
+        UIManager.Instance.PlayerStatus.Text.text = hp.ToString();
+        BattleManager.Instance.SetMovePlayableIcon();
+        if (BattleCalucation.IsFinish())
+        {
+            UIManager.Instance.Finish(false);
+        }
+        CardManager.resetDestoryAttachCards();
+        TargetIconManager.Instance.IconDestory();
+        BattleManager.Instance.Destorytaret();
+
     }
 }

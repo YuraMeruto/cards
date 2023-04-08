@@ -162,7 +162,7 @@ public class CardManager
         {
             var t = PlayableCharacterManager.Instance.getPlayerIconList()[0];
             TargetIconManager.Instance.InstanceIcon(t.PlayableObject.gameObject.transform.position);
-
+            EnemyManager.InstanceEnemyManager.updateSetEnemyTargetAction(true);
         }
         return;
         removeAttachedCards();

@@ -5,6 +5,11 @@ using UnityEngine;
 
 public class EnemyAction
 {
+    public enum ActionStatus
+    {
+        None,
+        Target,
+    }
     bool is_update = false;
     EnemyManager.ActionType action_type = EnemyManager.ActionType.None;
     Card pear_card = new Card();

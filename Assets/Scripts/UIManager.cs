@@ -27,7 +27,7 @@ public class UIManager
         // プレイヤーのHP
         player_status = new PlayerStatus();
         player_status.Text = GameObject.Find("PlayerHp").GetComponent<Text>();
-        player_status.setHp(10);
+        player_status.setHp(999);
         // 終わりのテキスト
         finish_text = GameObject.Find("FinishText").GetComponent<Text>();
         finish_text.text = "";
