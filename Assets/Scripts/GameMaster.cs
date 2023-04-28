@@ -66,5 +66,15 @@ public class GameMaster : MonoBehaviour
 
         BattleManager battle_manager = new BattleManager();
         battle_manager.Ini();
+
+        CardChangeManager card_change_manager = new CardChangeManager();
+        card_change_manager.Ini();
+
+        BattleCalucation battle_calucation = new BattleCalucation();
+        battle_calucation.Ini();
+
+        ComboManager combo_manager = new ComboManager();
+        combo_manager.Ini();
+        update_list.Add(combo_manager);
     }
 }

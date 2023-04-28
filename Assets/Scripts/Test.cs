@@ -7,53 +7,50 @@ public class Test : MonoBehaviour
     [SerializeField]
     GameObject obj;
     [SerializeField]
-    GameObject obj2;
+    float start;
     [SerializeField]
-    GameObject obj3;
+    float end;
+    GameObject can;
+    Text t;
     [SerializeField]
-    GameObject obj4;
-    [SerializeField]
-    GameObject obj5;
-    [SerializeField]
-    GameObject obj6;
-
-
-    [SerializeField]
-    GameObject target;
-    [SerializeField]
-    GameObject target2;
+    GameObject start_obj;
     void Start()
     {
-        var c = obj.GetComponent<SpriteRenderer>().color;
-        c.a = 0.5f;
-        obj.GetComponent<SpriteRenderer>().color = c;
-        /*
-Debug.Log("画面の左下の座標は " + Camera.main.ScreenToWorldPoint(new Vector2(0, 0)));
-Debug.Log("画面の左上の座標は " + Camera.main.ScreenToWorldPoint(new Vector2(0, Screen.height)));
-Debug.Log("画面の右上の座標は " + Camera.main.ScreenToWorldPoint(new Vector2(Screen.width, Screen.height)));
-Debug.Log("画面の右下の座標は " + Camera.main.ScreenToWorldPoint(new Vector2(Screen.width, 0)));
-*/
-
-        obj.transform.position = Camera.main.ScreenToWorldPoint(Vector3.zero);
-        obj2.transform.position = Camera.main.ScreenToWorldPoint(new Vector2(0,Screen.height));
-        obj3.transform.position = Camera.main.ScreenToWorldPoint(new Vector2(Screen.width, Screen.height));
-        obj4.transform.position = Camera.main.ScreenToWorldPoint(new Vector2(Screen.width,0));
-
-        /*
-        obj.transform.position = Camera.main.ViewportToScreenPoint(Vector3.zero);
-        obj2.transform.position = Camera.main.WorldToViewportPoint(Vector3.zero);
-        obj3.transform.position = Camera.main.WorldToScreenPoint(Vector3.zero);
-        obj4.transform.position = Camera.main.ViewportToWorldPoint(Vector3.zero);
-        obj5.transform.position = Camera.main.ScreenToViewportPoint(Vector3.zero);
-        obj6.transform.position = Camera.main.ScreenToWorldPoint(Vector3.zero);
-        */
+        // Cavas上でのポジション設定
+       var text_obji =  obj.GetComponent<RectTransform>();
+        var newPos = Vector2.zero;
+        var camera = Camera.main;
+        can = GameObject.Find("Canvas");
+        var canvasRectTrans = can.GetComponent<RectTransform>();
+        var r = start_obj.GetComponent<RectTransform>().position;
+        var target = r;
+        var screenPos = RectTransformUtility.WorldToScreenPoint(camera, target);
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(canvasRectTrans, screenPos, camera, out newPos);
+        newPos.y /= 2;
+        text_obji.localPosition = newPos;
 
     }
     void Update()
     {
+        /*
+        start =Mathf.Lerp(start, end,Time.deltaTime * 2);
+        int i = (int)start;
+        t.text = i.ToString();
+        */
+        /*
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            var pos = Camera.main.ViewportToWorldPoint(gameObject.transform.position);
+            Debug.Log("view_to_world" + pos.x + ":" + pos.y);
 
+            var pos2 = Camera.main.ScreenToViewportPoint(gameObject.transform.position);
+            Debug.Log("screen_to_view" + pos2.x + ":" + pos2.y);
 
-     //   Debug.Log(Mathf.Abs(target.transform.position.x) -  Mathf.Abs(target2.transform.position.x));
+            var pos3 = Camera.main.ViewportToScreenPoint(gameObject.transform.position);
+            Debug.Log("view_to_screen" + pos3.x + ":" + pos3.y);
+        }
+        */
+        //   Debug.Log(Mathf.Abs(target.transform.position.x) -  Mathf.Abs(target2.transform.position.x));
 
     }
 

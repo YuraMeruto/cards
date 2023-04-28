@@ -11,6 +11,7 @@ public class PlayableCharacterIcon :PlayableCharacterIconBase
     {
         game_object = o;
         ReLocation = r_location;
+        SpriteRen = o.GetComponent<SpriteRenderer>();
 
     }
 
@@ -21,7 +22,41 @@ public class PlayableCharacterIcon :PlayableCharacterIconBase
         {
             return;
         }
+        if (IsSwoon)
+        {
+            SwoonUpdate();
+            return;
+        }
         MoveUpdate();
+    }
+
+    public void SwoonUpdate()
+    {
+        SwoonTime -= Time.deltaTime;
+        var color = sprite.color;
+        if (is_alpha_update)
+        {
+            color.a += Time.deltaTime * ConstValues.SWOON_UPDATE_COLOR_ALPHA;
+        }
+        else
+        {
+            color.a -= Time.deltaTime * ConstValues.SWOON_UPDATE_COLOR_ALPHA;
+        }
+        if (color.a <= 0.0f)
+        {
+            is_alpha_update = true;
+        }
+        else if(color.a >= 1.0f){
+            is_alpha_update = false;
+        }
+
+        sprite.color = color;
+        if (SwoonTime <= 0.0f)
+        {
+            is_swoon = false;
+            color.a = 1.0f;
+            sprite.color = color;
+        }
     }
 
     void MoveUpdate()

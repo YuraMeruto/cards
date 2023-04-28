@@ -114,7 +114,6 @@ public class PlayableCharacterManager : UpdateBase
     }
     public override void Update()
     {
-        Debug.Log(is_update);
         if (!is_update)
         {
             return;

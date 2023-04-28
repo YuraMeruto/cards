@@ -9,8 +9,8 @@ using System.Linq;
 
 public class CardManager
 {
-    const int INSTANT_COUNT = 14;
-    const int INSTANCE_TYPE = 7;
+    const int INSTANT_COUNT = 4;
+    const int INSTANCE_TYPE = 2;
     public enum Number {
         Ace,
         Two,
@@ -75,20 +75,19 @@ public class CardManager
         var bulletPrefab = bulletPrefabHundle.WaitForCompletion();
 
         // Prefabからゲームオブジェクトの作成
-        var left_pos = 0;
-        var top_pos = Screen.height;
-        var const_x = 100;
-        var const_y = -90;
+        float left_pos = 0;
+        float top_pos = 0.0f;
+        var const_x = Screen.width / 10;
+        var const_y = Screen.height / 4;
         var instance_line = INSTANT_COUNT / 2;
         var instance_column = 2;
         // カード生成
-        var instance_pos = Camera.main.ViewportToScreenPoint(new Vector3(0, 0, 10));
+        var instance_pos = Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 10));
         for (var index_column = 0; index_column < instance_column; index_column++) {
             top_pos += const_y;
-            left_pos = const_x;
+            left_pos = 0;
             for (var index = 0; index <= instance_line; index++)
             {
-                left_pos += const_x;
                 var instance = MonoBehaviour.Instantiate(bulletPrefab);
 
                 instance.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 10));
@@ -99,6 +98,7 @@ public class CardManager
                 game_object_list.Add(instance.GetInstanceID(), card);
                 // 配置移動のスクリプト
                 CardInstanceMove move = new CardInstanceMove();
+                left_pos += const_x;
                 var ran = UnityEngine.Random.RandomRange(0.5f,1.0f);
                 move.Ini(instance, Camera.main.ScreenToWorldPoint(new Vector3(left_pos, top_pos, 10)), ran);
                 GameMaster.GameMasterClass.animationUpdateList.Add(instance,move);
@@ -165,6 +165,7 @@ public class CardManager
             EnemyManager.InstanceEnemyManager.updateSetEnemyTargetAction(true);
         }
         return;
+        /*
         removeAttachedCards();
         destoryAttachCards();
         if (game_object_list.Count == 0)
@@ -172,6 +173,7 @@ public class CardManager
             Debug.Log("再生産");
             InstanceCards();
         }
+        */
     }
 
     public static void resetDestoryAttachCards()
@@ -180,7 +182,10 @@ public class CardManager
         destoryAttachCards();
         if (game_object_list.Count == 0)
         {
-            Debug.Log("再生産");
+            if (TurnManager.TurnStatus == TurnManager.Turn.Enemy)
+            {
+                EnemyManager.InstanceEnemyManager.updateSet(false);
+            }
             InstanceCards();
         }
     }

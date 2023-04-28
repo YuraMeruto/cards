@@ -26,13 +26,6 @@ public class StartCountAnimationManager
         StartCountAnimation s = new StartCountAnimation();
         s.Ini(count_text.GetComponent<Text>(), 1.5f, 3);
         GameMaster.GameMasterClass.animationUpdateList.Add(count_text, s);
-        Debug.Log(count_text.gameObject.name);
-
-
-
-
-
-
 
         return;
         /*

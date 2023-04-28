@@ -36,6 +36,7 @@ public class BattleManager
         var pos = target.PlayableObject.transform.position;
         var back_value = 0.0f;
         MonoBehaviour.Destroy(target_back_space.GetComponent<BoxCollider2D>());
+
         foreach (var val in PlayableCharacterManager.Instance.ActionPlayableList)
         {
             back_value += Utill.BackPostionCalculation(val, target);
@@ -45,6 +46,12 @@ public class BattleManager
             back_value = -back_value;
         }
         pos.x += back_value;
+        if (Utill.IsOutField(pos, target.IsEnemy))
+        {
+            Debug.Log("吹き飛んだ");
+            pos.x = Utill.GetOutField(target.IsEnemy);
+            SetSwoonStatus();
+        }
         target_back_space.transform.position = pos;
     }
 
@@ -61,7 +68,16 @@ public class BattleManager
             back_value = -back_value;
         }
         pos.x += back_value;
+        Debug.Log("吹き飛ぶかどうか");
+        // フィールド外に飛ばされたらとりま気絶させる
+        if (Utill.IsOutField(pos,target.IsEnemy))
+        {
+            Debug.Log("吹き飛んだ");
+            pos.x = Utill.GetOutField(target.IsEnemy);
+            SetSwoonStatus();
+        }
         target.PlayableObject.gameObject.transform.position = pos;
+
     }
 
     public void Destorytaret()
@@ -69,4 +85,22 @@ public class BattleManager
         target = null;
         MonoBehaviour.Destroy(target_back_space);
     }
+
+    /// <summary>
+    /// 気絶状態の設定
+    /// </summary>
+    private void SetSwoonStatus()
+    {
+        if (target.IsSwoon)
+        {
+            return;
+        }
+        target.IsSwoon = true;
+        target.SwoonTime = ConstValues.DEFAULT_SWOON_TIME;
+        var c = target.PlayableObject.GetComponent<SpriteRenderer>().color;
+        c.a /= 2;
+        target.PlayableObject.GetComponent<SpriteRenderer>().color = c;
+        target.IsAlphaUpdate = false;
+    }
+
 }

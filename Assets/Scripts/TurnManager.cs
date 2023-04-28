@@ -81,19 +81,22 @@ public class TurnManager : UpdateBase
     public void PlayerBattle()
     {
         // バトル計算
-        var hp = BattleCalucation.ResultCalucation(CardManager.AttachCards[0].CardType, UIManager.Instance.EnemyStatus.HP);
+        var hp = BattleCalucation.ResultCalucation(CardManager.AttachCards[0].CardType, UIManager.Instance.EnemyStatus.HP,false,true);
         if (hp <= 0)
         {
             hp = 0;
         }
-        UIManager.Instance.EnemyStatus.HP = hp;
-        UIManager.Instance.EnemyStatus.Text.text = hp.ToString();
+        UIManager.Instance.EnemyStatus.setHp(hp);
+
+        var addhp = new AddHpTextAnimation();
+        addhp.Ini((int)CardManager.AttachCards[0].CardType + 1,false,false);
         BattleManager.Instance.SetMovePlayableIcon();
         if (BattleCalucation.IsFinish())
         {
             UIManager.Instance.Finish(true);
         }
         CardManager.resetDestoryAttachCards();
+        ComboManager.Instance.SetCombo();
 //        CardManager.failureMatching();
 //        PlayableCharacterManager.Instance.Relocation();
 //        PlayerManager.InstancePlayerManger.updateSet(false);
@@ -104,18 +107,20 @@ public class TurnManager : UpdateBase
     public void EnemyBattle()
     {
         // バトル計算
-        var hp = BattleCalucation.ResultCalucation(CardManager.AttachCards[0].CardType, UIManager.Instance.PlayerStatus.HP);
+        var hp = BattleCalucation.ResultCalucation(CardManager.AttachCards[0].CardType, UIManager.Instance.PlayerStatus.HP,true, true);
         if (hp <= 0)
         {
             hp = 0;
         }
-        UIManager.Instance.PlayerStatus.HP = hp;
-        UIManager.Instance.PlayerStatus.Text.text = hp.ToString();
+        UIManager.Instance.PlayerStatus.setHp(hp);
+        var addhp = new AddHpTextAnimation();
+        addhp.Ini((int)CardManager.AttachCards[0].CardType + 1, true, false);
         BattleManager.Instance.SetMovePlayableIcon();
         if (BattleCalucation.IsFinish())
         {
             UIManager.Instance.Finish(false);
         }
+        ComboManager.Instance.SetCombo();
         CardManager.resetDestoryAttachCards();
         TargetIconManager.Instance.IconDestory();
         BattleManager.Instance.Destorytaret();

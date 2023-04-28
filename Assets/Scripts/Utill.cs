@@ -45,4 +45,37 @@ public class Utill
     {
        return  goal_obj.transform.position.x - obj.transform.position.x;
     }
+
+    public static Vector3 convertScreenPos(Vector3 pos)
+    {
+        return Vector3.zero;
+    }
+
+    public static bool IsOutField(Vector3 pos, bool is_enemy)
+    {
+
+        Debug.Log(pos.x +"::::"+Screen.width);
+        var pos_c = Camera.main.WorldToScreenPoint(pos);
+        Debug.Log(pos_c.x + "::::" + Screen.width);
+        if (is_enemy && pos_c.x >= Screen.width)
+        {
+            return true;
+        }
+        if (pos_c.x <= 0.0f)
+        {
+            return true;
+        }
+        return false;
+    }
+
+    public static float GetOutField(bool is_enemy)
+    {
+        var vec = Vector3.zero;
+        if (is_enemy)
+        {
+            vec.x = Screen.width;
+            return Camera.main.ScreenToWorldPoint(vec).x;
+        }
+        return Camera.main.ScreenToWorldPoint(vec).x;
+    }
 }

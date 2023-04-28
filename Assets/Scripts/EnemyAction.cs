@@ -19,6 +19,7 @@ public class EnemyAction
     {
         if (!is_update)
         {
+            Debug.Log("‚½‚¾‚¢‚Ü’âŽ~’†");
             return;
         }
         update_time -= Time.deltaTime;

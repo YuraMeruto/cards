@@ -11,11 +11,13 @@ public class CardChangeWait : AnimationUpdateBase
     {
         wait_time = time;
         game_obj = obj;
+        CardChangeManager.Instance.CardListCount++;
+
     }
 
     public override void Finish()
     {
-
+        CardChangeManager.Instance.CardListCount--;
     }
 
     public override void Update()
@@ -28,7 +30,6 @@ public class CardChangeWait : AnimationUpdateBase
         if (wait_time <= 0.0f)
         {
             is_finish = true;
-            Debug.Log("hogehoge");
             CardManager.ChangeCard(game_obj);
             GameMaster.GameMasterClass.animationUpdateList.AddRemove(game_obj);
         }
