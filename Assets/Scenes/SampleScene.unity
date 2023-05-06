@@ -798,6 +798,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 687718733}
     m_Modifications:
     - target: {fileID: 4115966842274572112, guid: da271f1dd85b9b54891ec544c99952c0, type: 3}
+      propertyPath: m_Text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4115966842274572112, guid: da271f1dd85b9b54891ec544c99952c0, type: 3}
       propertyPath: m_FontData.m_LineSpacing
       value: 1
       objectReference: {fileID: 0}

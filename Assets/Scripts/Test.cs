@@ -16,18 +16,7 @@ public class Test : MonoBehaviour
     GameObject start_obj;
     void Start()
     {
-        // Cavasè„Ç≈ÇÃÉ|ÉWÉVÉáÉìê›íË
-       var text_obji =  obj.GetComponent<RectTransform>();
-        var newPos = Vector2.zero;
-        var camera = Camera.main;
-        can = GameObject.Find("Canvas");
-        var canvasRectTrans = can.GetComponent<RectTransform>();
-        var r = start_obj.GetComponent<RectTransform>().position;
-        var target = r;
-        var screenPos = RectTransformUtility.WorldToScreenPoint(camera, target);
-        RectTransformUtility.ScreenPointToLocalPointInRectangle(canvasRectTrans, screenPos, camera, out newPos);
-        newPos.y /= 2;
-        text_obji.localPosition = newPos;
+        Debug.Log(GetComponentInChildren<ParticleSystem>());
 
     }
     void Update()

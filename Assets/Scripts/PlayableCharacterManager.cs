@@ -156,15 +156,13 @@ public class PlayableCharacterManager : UpdateBase
             foreach (var val in player_goal_list)
             {
                 action_playable_list.Add(val);
-
             }
-            Debug.LogWarning(player_goal_list.Count + ":::" + enemy_goal_list.Count);
             Debug.LogWarning("プレイヤーアクション");
             PlayerManager.InstancePlayerManger.PlayerAction.Status = PlayerAction.ActionStatus.CardSelect;
             is_update = false;
             PlayerManager.InstancePlayerManger.updateSet(true);
             TurnManager.TurnStatus = TurnManager.Turn.Player;
-
+            CardManager.OnEffectCard();
         }
         else if (enemy_goal_list.Count != 0)
         {
@@ -208,10 +206,6 @@ public class PlayableCharacterManager : UpdateBase
 
     public PlayableCharacterIconBase GetPlayable(GameObject obj)
     {
-        Debug.LogWarning(PlayableIconList.Count);
-        Debug.LogWarning(obj.GetInstanceID());
-        Debug.LogWarning(obj.name);
-
         return PlayableIconList[obj.GetInstanceID()];
     }
 

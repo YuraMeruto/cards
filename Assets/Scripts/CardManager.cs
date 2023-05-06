@@ -115,7 +115,6 @@ public class CardManager
 
     public static void AttachCard(GameObject obj)
     {
-        Debug.Log(GetCard(obj).CardType);
         if (isAttached(obj))
         {
             return;
@@ -243,6 +242,7 @@ public class CardManager
             val.ChangeShowStatus();
         }
         attach_card.Clear();
+        OffEffectCard();
     }
 
     public static bool isMatching()
@@ -294,4 +294,20 @@ public class CardManager
         }
         return "";
     }
+
+    public static void OnEffectCard()
+    {
+        foreach(var card in game_object_list)
+        {
+            card.Value.SetActiveRightEffect(true);
+        }
+    }
+    public static void OffEffectCard()
+    {
+        foreach (var card in game_object_list)
+        {
+            card.Value.SetActiveRightEffect(false);
+        }
+    }
+
 }
