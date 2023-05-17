@@ -16,8 +16,12 @@ public class PlayableCharacterManager : UpdateBase
     List<PlayableCharacterIconBase> action_playable_list = new List<PlayableCharacterIconBase>();
     Vector3 goal_pos = new Vector3();
 
+    public Vector3 GoalPos { get { return goal_pos; }}
     public Dictionary<int, PlayableCharacterIconBase> PlayableIconList { get { return playable_character_list; } }
     public List<PlayableCharacterIconBase> ActionPlayableList { get { return action_playable_list; } }
+
+    public List<PlayableCharacterIconBase> PlayerGoalList { get { return player_goal_list; } }
+    public List<PlayableCharacterIconBase> EnemyGoalList { get { return enemy_goal_list; } }
 
 
     static PlayableCharacterManager playableCharacterManager;
@@ -43,7 +47,9 @@ public class PlayableCharacterManager : UpdateBase
         instance.transform.position = Camera.main.ScreenToWorldPoint(goal_pos);
         goal_object = instance;
 
+        LoadPlayableStage.LoadPlayable();
 
+        /*
         // プレイアブル生成
         bulletPrefabHundle = Addressables.LoadAssetAsync<GameObject>(AddressablesNames.PLAYABLE_CHARACTER);
         // 非同期での処理について終了を待つ
@@ -58,20 +64,21 @@ public class PlayableCharacterManager : UpdateBase
         float r_location = 2;
         playable_player.Ini(instance,r_location);
         playable_player.IsEnemy = false;
+        playable_player.OverRideParameter(888);
         Add(instance,playable_player);
-
         instance = MonoBehaviour.Instantiate(bulletPrefab);
         pos = goal_pos;
         pos.x = goal_pos.x / 1.1f;
         pos.z = 10;
         instance.transform.position = Camera.main.ScreenToWorldPoint(pos);
-        PlayableCharacterIcon a = new PlayableCharacterIcon();
+        GoHomeClub a = new GoHomeClub();
         r_location = 6;
         a.Ini(instance,6);
         a.IsEnemy = false;
         Add(instance, a);
-
+        */
         // 敵
+        /*
         instance = MonoBehaviour.Instantiate(bulletPrefab);
         instance.tag = TagManager.ENEMY;
         pos = goal_pos;
@@ -87,8 +94,9 @@ public class PlayableCharacterManager : UpdateBase
         e.Ini(instance,r_location);
         e.IsEnemy = true;
         Add(instance, e);
+        */
 
-
+        /*
         instance = MonoBehaviour.Instantiate(bulletPrefab);
         instance.tag = TagManager.ENEMY;
         pos = goal_pos;
@@ -107,11 +115,10 @@ public class PlayableCharacterManager : UpdateBase
         f.Ini(instance, r_location);
         f.IsEnemy = true;
         Add(instance, f);
-
-
-
+*/
         is_update = false;
     }
+
     public override void Update()
     {
         if (!is_update)
@@ -147,7 +154,9 @@ public class PlayableCharacterManager : UpdateBase
         {
             Debug.LogWarning("ドロー");
             is_update = false;
+            PlayerManager.InstancePlayerManger.updateSet(true);
             DrawAction();
+
         }
         // 行動開始
         // プレイヤーの行動
@@ -209,10 +218,14 @@ public class PlayableCharacterManager : UpdateBase
         return PlayableIconList[obj.GetInstanceID()];
     }
 
-
+    /// <summary>
+    /// 同着した時の処理
+    /// </summary>
     void DrawAction()
     {
-
+        Debug.Log("DrawAction");
+        PlayerManager.InstancePlayerManger.PlayerAction.Status = PlayerAction.ActionStatus.DrawCardSelect;
+        DrawBattleManager.Instance.InstanceDrawCards();
     }
 
     // Relocation　再配置
@@ -223,7 +236,9 @@ public class PlayableCharacterManager : UpdateBase
             var pos = goal_pos;
             pos.x = goal_pos.x / val.ReLocation;
             pos.z = 10;
-            val.PlayableObject.transform.position = Camera.main.ScreenToWorldPoint(pos);
+            var screen_pos = Camera.main.ScreenToWorldPoint(pos);
+            screen_pos.y = val.PlayableObject.transform.position.y;
+            val.PlayableObject.transform.position = screen_pos;
 
         }
         foreach (var val in enemy_goal_list)
@@ -231,7 +246,10 @@ public class PlayableCharacterManager : UpdateBase
            var pos = goal_pos;
             pos.x = goal_pos.x / val.ReLocation;
             pos.z = 10;
-            val.PlayableObject.transform.position = Camera.main.ScreenToWorldPoint(pos);
+            var screen_pos = Camera.main.ScreenToWorldPoint(pos);
+            screen_pos.y = val.PlayableObject.transform.position.y;
+            val.PlayableObject.transform.position = screen_pos;
+
             var convert = val.PlayableObject.transform.position;
             convert.x = -convert.x;
             val.PlayableObject.transform.position = convert;
@@ -242,4 +260,25 @@ public class PlayableCharacterManager : UpdateBase
         is_update = true;
     }
 
+    public void SetRelocation(PlayableCharacterIconBase t)
+    {
+        var pos = goal_pos;
+        pos.x = goal_pos.x / t.ReLocation;
+        pos.z = 10;
+        var screen_pos = Camera.main.ScreenToWorldPoint(pos);
+        screen_pos.y =  t.PlayableObject.transform.position.y;
+        if (t.IsEnemy)
+        {
+            screen_pos.x = -screen_pos.x;
+        }
+        t.PlayableObject.transform.position = screen_pos;
+    }
+
+    public void UpdateRestart()
+    {
+        enemy_goal_list.Clear();
+        player_goal_list.Clear();
+        action_playable_list.Clear();
+        is_update = true;
+    }
 }

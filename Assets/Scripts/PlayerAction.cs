@@ -10,6 +10,7 @@ public class PlayerAction
         None,
         CardSelect,
         TargetEnemy,
+        DrawCardSelect,
     }
     ActionStatus action_satus = ActionStatus.None;
     public ActionStatus Status { get { return action_satus; } set { action_satus = value; } }
@@ -43,6 +44,9 @@ public class PlayerAction
                     case ActionStatus.TargetEnemy:
                         TargetEnemy(clickedGameObject);
                         break;
+                    case ActionStatus.DrawCardSelect:
+                        DrawCardSelect(clickedGameObject);
+                        break;
                 }
             }
 
@@ -57,6 +61,14 @@ public class PlayerAction
         }
     }
 
+    private void DrawCardSelect(GameObject target)
+    {
+        if (target.tag == TagManager.DRAW_CARD)
+        {
+            HitDrawCard(target);
+        }
+    }
+
     private void TargetEnemy(GameObject target)
     {
         Debug.Log(target.tag);
@@ -64,7 +76,7 @@ public class PlayerAction
         {
             if (IsBattleStart(target))
             {
-                TurnManager.Instance.PlayerBattle();
+                TurnManager.Instance.PlayerBattle(CardManager.AttachCards[0].CardType);
                 Status = ActionStatus.CardSelect;
                 return;
             }
@@ -82,6 +94,13 @@ public class PlayerAction
         }
         is_update = false;
         ActionTimeManger.Instance.StartWaitCardTime();
+    }
+
+    private void HitDrawCard(GameObject obj)
+    {
+        DrawBattleManager.Instance.PlayerSelect(obj);
+        Status = ActionStatus.None;
+        is_update = false;
     }
 
     private bool IsBattleStart(GameObject target)

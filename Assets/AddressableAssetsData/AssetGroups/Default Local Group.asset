@@ -143,6 +143,48 @@ MonoBehaviour:
     m_SerializedLabels:
     - default
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5f60401a847b31d45a0a9d9b9ea1871d
+    m_Address: SE/TestSe01.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 14f27a6cb8434d445b286a8e802a518d
+    m_Address: SE/TestSe02.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: abbac5e13b903d44abc323048ab59e18
+    m_Address: SE/TestSe05.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 418ebb159fe1e654c9719a5a4f6557a3
+    m_Address: SE/TestSe04.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8c4228ce6ed04e344b91b1d2ea0c686e
+    m_Address: SE/TestSe03.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d4c1051290acafd49a354091a8bbd917
+    m_Address: SE/TestSe06.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1c6522a2074e8df4390513f68d3a712d
+    m_Address: Images/ReImages/GohomeIcon.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 50b807ac8774fda4687d466a8d096c72, type: 2}
   m_SchemaSet:

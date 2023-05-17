@@ -22,7 +22,7 @@ public class EnemyTargetAction
             return;
         }
         DecideTargetPlayable();
-        TurnManager.Instance.EnemyBattle();
+        TurnManager.Instance.EnemyBattle(CardManager.AttachCards[0].CardType);
         is_update = false;
 
         EnemyManager.InstanceEnemyManager.updateSet(true);

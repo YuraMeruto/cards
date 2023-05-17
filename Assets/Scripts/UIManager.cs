@@ -10,6 +10,7 @@ public class UIManager
     PlayerStatus player_status;
     Text finish_text;
     Text combo_text;
+    Text draw_text;
 
     static UIManager ui_manger;
     public PlayerStatus PlayerStatus { get { return player_status; } }
@@ -25,13 +26,13 @@ public class UIManager
         // 敵のHP
         var enemy_hp = 99;
         enemy_status = new EnemyStatus();
-        enemy_status.Text = GameObject.Find("EnmeyHp").GetComponent<Text>();
+        enemy_status.Text = GameObject.Find(ConstValues.ENEMY_HP_OBJECT_NAME).GetComponent<Text>();
         var p = Vector3.zero;
         p.x = 770;
         p.y = 40f;
         p.z = 100;
 
-        enemy_status.Slider = GameObject.Find("EnemyHpGage").GetComponent<Slider>();
+        enemy_status.Slider = GameObject.Find(ConstValues.ENEMY_HP_GAGE_OBJECT_NAME).GetComponent<Slider>();
         enemy_status.Slider.maxValue = enemy_hp;
         enemy_status.setHp(enemy_hp);
         p = Vector3.zero;
@@ -43,14 +44,14 @@ public class UIManager
         // プレイヤーのHP
         var player_hp = 999;
         player_status = new PlayerStatus();
-        player_status.Text = GameObject.Find("PlayerHp").GetComponent<Text>();
+        player_status.Text = GameObject.Find(ConstValues.PLAYER_HP_OBJECT_NAME).GetComponent<Text>();
         p = Vector3.zero;
         p.x = 130f;
         p.y = 40f;
         p.z = 100;
         player_status.Text.GetComponent<RectTransform>().anchoredPosition = p;
 
-        player_status.Slider = GameObject.Find("PlayerHpGage").GetComponent<Slider>();
+        player_status.Slider = GameObject.Find(ConstValues.PLYAER_HP_GAGE_OBJECT_NAME).GetComponent<Slider>();
         player_status.Slider.maxValue = player_hp;
         player_status.setHp(player_hp);
         p = Vector3.zero;
@@ -60,7 +61,7 @@ public class UIManager
         player_status.Slider.GetComponent<RectTransform>().anchoredPosition = p;
  
         // 終わりのテキスト
-        finish_text = GameObject.Find("FinishText").GetComponent<Text>();
+        finish_text = GameObject.Find(ConstValues.FINISH_TEXT_OBJECT_NAME).GetComponent<Text>();
         finish_text.text = "";
 
     }
@@ -94,7 +95,7 @@ Debug.Log("画面の左上の座標は " + Camera.main.ScreenToWorldPoint(new Vector2(0, 
 Debug.Log("画面の右上の座標は " + Camera.main.ScreenToWorldPoint(new Vector2(Screen.width, Screen.height)));
 Debug.Log("画面の右下の座標は " + Camera.main.ScreenToWorldPoint(new Vector2(Screen.width, 0)));
 */
-        var canvas = GameObject.Find("Canvas");
+        var canvas = GameObject.Find(ConstValues.CANVAS_OBJECT_NAME);
         Debug.Log(RectTransformUtility.WorldToScreenPoint(Camera.main, canvas.transform.position));
         var instance = MonoBehaviour.Instantiate(bulletPrefab);
         instance.transform.position = Camera.main.WorldToScreenPoint(new Vector3(0, 0, 0));

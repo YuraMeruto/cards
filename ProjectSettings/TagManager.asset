@@ -6,6 +6,7 @@ TagManager:
   tags:
   - card
   - enemy
+  - draw_card
   layers:
   - Default
   - TransparentFX

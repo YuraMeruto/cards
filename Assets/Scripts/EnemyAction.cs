@@ -19,7 +19,6 @@ public class EnemyAction
     {
         if (!is_update)
         {
-            Debug.Log("‚½‚¾‚¢‚Ü’âŽ~’†");
             return;
         }
         update_time -= Time.deltaTime;
@@ -108,9 +107,6 @@ public class EnemyAction
 
     private Card searchPearCards()
     {
-        Debug.Log("searchPearCards");
-        Dictionary<CardManager.Number, Card> c = new Dictionary<CardManager.Number, Card>();
-        Debug.Log(CardManager.AttachedCards.Count);
         foreach (var val in CardManager.AttachedCards)
         {
             var i = 0;
@@ -122,9 +118,7 @@ public class EnemyAction
                 }
                 if(i == 2)
                 {
-                    Debug.Log("i+2");
                     pear_card = val.Value;
-                    Debug.Log("debugaaaa");
                     return v.Value;
                 }
             }

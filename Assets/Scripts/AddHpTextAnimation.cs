@@ -14,12 +14,12 @@ public class AddHpTextAnimation : AnimationUpdateBase
     {
 
         // カードのオブジェクト生成
-        var bulletPrefabHundle = Addressables.LoadAssetAsync<GameObject>("Prefabs/HitPointText.prefab");
+        var bulletPrefabHundle = Addressables.LoadAssetAsync<GameObject>(AddressablesNames.HIT_POINT_TEXT_PREFAB);
         // 非同期での処理について終了を待つ
         var bulletPrefab = bulletPrefabHundle.WaitForCompletion();
         var instance = MonoBehaviour.Instantiate(bulletPrefab);
         gameObject = instance;
-        var can = GameObject.Find("Canvas");
+        var can = GameObject.Find(ConstValues.CANVAS_OBJECT_NAME);
         gameObject.transform.parent = can.transform;
         gameObject.transform.localScale = Vector3.one;
         SetTextValue(hp_value,is_add_hp);

@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Utill 
+public class Utill
 {
     public static void Hoge()
     {
         Debug.Log("Hoge");
     }
 
-    public static Vector3 FowardObj(Vector3 pos,bool is_enemy)
+    public static Vector3 FowardObj(Vector3 pos, bool is_enemy)
     {
         var p = pos;
         var add = Time.deltaTime * 4.0f;
@@ -26,9 +26,10 @@ public class Utill
 
     }
 
-    public static bool IsGoalPos(GameObject obj,GameObject goal_obj,bool is_enemy)
+    public static bool IsGoalPos(GameObject obj, GameObject goal_obj, bool is_enemy)
     {
-        if (is_enemy) {
+        if (is_enemy)
+        {
             return goal_obj.transform.position.x >= obj.transform.position.x;
         }
         return obj.transform.position.x >= goal_obj.transform.position.x;
@@ -41,9 +42,9 @@ public class Utill
         return back_value;
     }
 
-    public static float getDistanceFromGoalPos(GameObject goal_obj,GameObject obj) 
+    public static float getDistanceFromGoalPos(GameObject goal_obj, GameObject obj)
     {
-       return  goal_obj.transform.position.x - obj.transform.position.x;
+        return goal_obj.transform.position.x - obj.transform.position.x;
     }
 
     public static Vector3 convertScreenPos(Vector3 pos)
@@ -54,9 +55,7 @@ public class Utill
     public static bool IsOutField(Vector3 pos, bool is_enemy)
     {
 
-        Debug.Log(pos.x +"::::"+Screen.width);
         var pos_c = Camera.main.WorldToScreenPoint(pos);
-        Debug.Log(pos_c.x + "::::" + Screen.width);
         if (is_enemy && pos_c.x >= Screen.width)
         {
             return true;

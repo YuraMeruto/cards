@@ -76,5 +76,12 @@ public class GameMaster : MonoBehaviour
         ComboManager combo_manager = new ComboManager();
         combo_manager.Ini();
         update_list.Add(combo_manager);
+
+        DrawBattleManager draw_battle_manager = new DrawBattleManager();
+        draw_battle_manager.Ini();
+
+        DrawBattleUI draw_battle_ui = new DrawBattleUI();
+        draw_battle_ui.Ini();
+        update_list.Add(draw_battle_ui);
     }
 }

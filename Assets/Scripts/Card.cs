@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 public class Card
@@ -22,7 +20,7 @@ public class Card
         show_status = showStatus;
         foreach(ParticleSystem child in obj.GetComponentsInChildren<ParticleSystem>())
         {
-            if (child.gameObject.name == "RightEffect")
+            if (child.gameObject.name == ConstValues.RIGHT_EFFECT_OBJECT_NAME)
             {
                 particle_object = child.gameObject;
             }
@@ -56,5 +54,10 @@ public class Card
     public void SetActiveRightEffect(bool active)
     {
         particle_object.SetActive(active);
+    }
+
+    public int ToIntNumber()
+    {
+        return ((int)number + 1);
     }
 }

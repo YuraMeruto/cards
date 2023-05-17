@@ -23,7 +23,7 @@ public class ComboManager : UpdateBase
         instance = this;
         is_update = false;
         // コンボテキスト
-        combo_text = GameObject.Find("ComboText").GetComponent<Text>();
+        combo_text = GameObject.Find(ConstValues.COMBO_TEXT_OBJECT_NAME).GetComponent<Text>();
         combo_text.text = "";
         var pos = Vector3.zero;
         pos.x = 500;
@@ -39,7 +39,6 @@ public class ComboManager : UpdateBase
         {
             return;
         }
-        Debug.Log("オーテスト");
         show_time -= Time.deltaTime;
         if (show_time <= 0.0f)
         {

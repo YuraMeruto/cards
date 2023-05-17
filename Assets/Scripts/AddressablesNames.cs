@@ -15,6 +15,7 @@ public class AddressablesNames
     public const string FRONT_JACK = "Assets/Images/jack.png";
     public const string FRONT_QUEEN = "Assets/Images/queen.png";
     public const string FRONT_KING = "Assets/Images/king.png";
+    public const string GOHOME_ICON = "Images/ReImages/GohomeIcon.png";
 
 
     // prefabŠÖ˜A
@@ -23,4 +24,6 @@ public class AddressablesNames
     public const string GOAL_LINE = "Assets/Prefabs/goal_line.prefab";
     public const string PLAYABLE_CHARACTER = "Assets/Prefabs/playableIcon.prefab";
     public const string TARGET_ICON_LIST = "Assets/Prefabs/target_icon.prefab";
+    public const string HIT_POINT_TEXT_PREFAB = "Prefabs/HitPointText.prefab";
+    public const string BACK_PREFAB = "Prefabs/back.prefab";
 }

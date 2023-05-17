@@ -64,12 +64,9 @@ public class CardManager
         }
         // ランダムシャッフル
         add_card_instance_list = add_card_instance_list.OrderBy(a => Guid.NewGuid()).ToList();
-        foreach (var val in instance_list)
-        {
-            Debug.Log(val);
-        }
+
         // カードのオブジェクト生成
-        var bulletPrefabHundle = Addressables.LoadAssetAsync<GameObject>("Prefabs/back.prefab");
+        var bulletPrefabHundle = Addressables.LoadAssetAsync<GameObject>(AddressablesNames.BACK_PREFAB);
 
         // 非同期での処理について終了を待つ
         var bulletPrefab = bulletPrefabHundle.WaitForCompletion();

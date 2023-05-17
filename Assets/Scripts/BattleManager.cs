@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BattleManager
@@ -50,7 +48,7 @@ public class BattleManager
         {
             Debug.Log("吹き飛んだ");
             pos.x = Utill.GetOutField(target.IsEnemy);
-            SetSwoonStatus();
+            SetTargetSwoonStatus();
         }
         target_back_space.transform.position = pos;
     }
@@ -68,16 +66,14 @@ public class BattleManager
             back_value = -back_value;
         }
         pos.x += back_value;
-        Debug.Log("吹き飛ぶかどうか");
         // フィールド外に飛ばされたらとりま気絶させる
         if (Utill.IsOutField(pos,target.IsEnemy))
         {
             Debug.Log("吹き飛んだ");
             pos.x = Utill.GetOutField(target.IsEnemy);
-            SetSwoonStatus();
+            SetTargetSwoonStatus();
         }
         target.PlayableObject.gameObject.transform.position = pos;
-
     }
 
     public void Destorytaret()
@@ -89,7 +85,7 @@ public class BattleManager
     /// <summary>
     /// 気絶状態の設定
     /// </summary>
-    private void SetSwoonStatus()
+    private void SetTargetSwoonStatus()
     {
         if (target.IsSwoon)
         {
@@ -103,4 +99,13 @@ public class BattleManager
         target.IsAlphaUpdate = false;
     }
 
+    public void SetSwoonStatus(PlayableCharacterIconBase target_playable)
+    {
+        target_playable.IsSwoon = true;
+        target_playable.SwoonTime = ConstValues.DEFAULT_SWOON_TIME;
+        var c = target_playable.PlayableObject.GetComponent<SpriteRenderer>().color;
+        c.a /= 2;
+        target_playable.PlayableObject.GetComponent<SpriteRenderer>().color = c;
+        target_playable.IsAlphaUpdate = false;
+    }
 }

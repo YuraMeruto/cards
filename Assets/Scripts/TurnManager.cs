@@ -78,18 +78,22 @@ public class TurnManager : UpdateBase
 
     }
 
-    public void PlayerBattle()
+    public void PlayerBattle(CardManager.Number card_number)
     {
         // バトル計算
-        var hp = BattleCalucation.ResultCalucation(CardManager.AttachCards[0].CardType, UIManager.Instance.EnemyStatus.HP,false,true);
+        var hp = BattleCalucation.ResultCalucation(card_number, UIManager.Instance.EnemyStatus.HP,false,true);
         if (hp <= 0)
         {
             hp = 0;
         }
         UIManager.Instance.EnemyStatus.setHp(hp);
+        foreach (var val in PlayableCharacterManager.Instance.ActionPlayableList)
+        {
+            val.AttackSe();
+        }
 
         var addhp = new AddHpTextAnimation();
-        addhp.Ini((int)CardManager.AttachCards[0].CardType + 1,false,false);
+        addhp.Ini((int)card_number + 1,false,false);
         BattleManager.Instance.SetMovePlayableIcon();
         if (BattleCalucation.IsFinish())
         {
@@ -97,24 +101,21 @@ public class TurnManager : UpdateBase
         }
         CardManager.resetDestoryAttachCards();
         ComboManager.Instance.SetCombo();
-//        CardManager.failureMatching();
-//        PlayableCharacterManager.Instance.Relocation();
-//        PlayerManager.InstancePlayerManger.updateSet(false);
         TargetIconManager.Instance.IconDestory();
         BattleManager.Instance.Destorytaret();
     }
 
-    public void EnemyBattle()
+    public void EnemyBattle(CardManager.Number card_number)
     {
         // バトル計算
-        var hp = BattleCalucation.ResultCalucation(CardManager.AttachCards[0].CardType, UIManager.Instance.PlayerStatus.HP,true, true);
+        var hp = BattleCalucation.ResultCalucation(card_number, UIManager.Instance.PlayerStatus.HP,true, true);
         if (hp <= 0)
         {
             hp = 0;
         }
         UIManager.Instance.PlayerStatus.setHp(hp);
         var addhp = new AddHpTextAnimation();
-        addhp.Ini((int)CardManager.AttachCards[0].CardType + 1, true, false);
+        addhp.Ini((int)card_number + 1, true, false);
         BattleManager.Instance.SetMovePlayableIcon();
         if (BattleCalucation.IsFinish())
         {

@@ -7,12 +7,18 @@ public class PlayableCharacterIcon :PlayableCharacterIconBase
     bool is_update = true;
     public bool IsUpdate { get { return is_update; } set { is_update = value; } }
 
-    public void Ini(GameObject o,float r_location)
+
+    public virtual void Ini(GameObject o,float r_location)
     {
         game_object = o;
         ReLocation = r_location;
         SpriteRen = o.GetComponent<SpriteRenderer>();
+        AudioSource = o.GetComponent<AudioSource>();
+    }
 
+    public virtual void OverRideParameter(int attack_se)
+    {
+        AttackSe01 = attack_se;
     }
 
     // Update is called once per frame
@@ -65,4 +71,13 @@ public class PlayableCharacterIcon :PlayableCharacterIconBase
         return;
     }
 
+    public override void AttackSe()
+    {
+        Debug.Log("PlayeableC"+AttackSe01+":::"+game_object.GetInstanceID());
+    }
+
+    public override void DrawBattleSe()
+    {
+        Debug.Log("PlayeableC" + AttackSe01 + ":::" + game_object.GetInstanceID());
+    }
 }

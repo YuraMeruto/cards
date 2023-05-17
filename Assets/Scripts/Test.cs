@@ -2,44 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.AddressableAssets;
+
+
 public class Test : MonoBehaviour
 {
     [SerializeField]
-    GameObject obj;
-    [SerializeField]
-    float start;
-    [SerializeField]
-    float end;
-    GameObject can;
-    Text t;
-    [SerializeField]
-    GameObject start_obj;
+    SpriteRenderer r;
     void Start()
     {
-        Debug.Log(GetComponentInChildren<ParticleSystem>());
 
     }
     void Update()
     {
-        /*
-        start =Mathf.Lerp(start, end,Time.deltaTime * 2);
-        int i = (int)start;
-        t.text = i.ToString();
-        */
-        /*
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKey(KeyCode.Space))
         {
-            var pos = Camera.main.ViewportToWorldPoint(gameObject.transform.position);
-            Debug.Log("view_to_world" + pos.x + ":" + pos.y);
-
-            var pos2 = Camera.main.ScreenToViewportPoint(gameObject.transform.position);
-            Debug.Log("screen_to_view" + pos2.x + ":" + pos2.y);
-
-            var pos3 = Camera.main.ViewportToScreenPoint(gameObject.transform.position);
-            Debug.Log("view_to_screen" + pos3.x + ":" + pos3.y);
+            var snd = Addressables.LoadAssetAsync<Sprite>("Images/ReImages/GohomeIcon.png");
+            var s = snd.WaitForCompletion();
+            r.sprite = s;
         }
-        */
-        //   Debug.Log(Mathf.Abs(target.transform.position.x) -  Mathf.Abs(target2.transform.position.x));
 
     }
 
