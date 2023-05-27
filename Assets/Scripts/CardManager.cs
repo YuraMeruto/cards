@@ -79,7 +79,7 @@ public class CardManager
         var instance_line = INSTANT_COUNT / 2;
         var instance_column = 2;
         // カード生成
-        var instance_pos = Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 10));
+        var instance_pos = Camera.main.ScreenToWorldPoint(new Vector3(0, 0, ConstValues.PLAYABKE_POS_Z));
         for (var index_column = 0; index_column < instance_column; index_column++) {
             top_pos += const_y;
             left_pos = 0;
@@ -87,7 +87,7 @@ public class CardManager
             {
                 var instance = MonoBehaviour.Instantiate(bulletPrefab);
 
-                instance.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 10));
+                instance.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(0, 0, ConstValues.PLAYABKE_POS_Z));
                 instance.gameObject.tag = TagManager.CARD;
                 var card = new Card();
                 card.Ini(add_card_instance_list[0], instance, ShowStatus.Back);
@@ -97,7 +97,7 @@ public class CardManager
                 CardInstanceMove move = new CardInstanceMove();
                 left_pos += const_x;
                 var ran = UnityEngine.Random.RandomRange(0.5f,1.0f);
-                move.Ini(instance, Camera.main.ScreenToWorldPoint(new Vector3(left_pos, top_pos, 10)), ran);
+                move.Ini(instance, Camera.main.ScreenToWorldPoint(new Vector3(left_pos, top_pos, ConstValues.PLAYABKE_POS_Z)), ran);
                 GameMaster.GameMasterClass.animationUpdateList.Add(instance,move);
                 // プレハブが裏なので画像を変える
                 card.ChangeShowStatus();
@@ -161,15 +161,6 @@ public class CardManager
             EnemyManager.InstanceEnemyManager.updateSetEnemyTargetAction(true);
         }
         return;
-        /*
-        removeAttachedCards();
-        destoryAttachCards();
-        if (game_object_list.Count == 0)
-        {
-            Debug.Log("再生産");
-            InstanceCards();
-        }
-        */
     }
 
     public static void resetDestoryAttachCards()

@@ -59,7 +59,7 @@ public class DrawBattleManager
         scale.y = 1;
         scale.z = 1;
 
-        instance_pos.z = 10;
+        instance_pos.z = ConstValues.PLAYABKE_POS_Z;
         foreach (var val in instance_list)
         {
             var instance = MonoBehaviour.Instantiate(bulletPrefab);
@@ -115,6 +115,7 @@ public class DrawBattleManager
         {
             result = BattleResult.Sucsess;
             DrawBattleUI.Instance.SetBattleResult(result);
+            CommonSeManager.PlaySe(ConstValues.DRAW_BATTLE_RESULT_WIN_VALUE);
         }
         else if (player_attach_card.ToIntNumber() == enemy_attach_card.ToIntNumber())
         {
@@ -209,13 +210,15 @@ public class DrawBattleManager
             var pos = enemy.PlayableObject.gameObject.transform.position;
             pos.x = back_value;
             BattleManager.Instance.SetSwoonStatus(enemy);
-            enemy.PlayableObject.gameObject.transform.position = pos;
+            PlayableMovePostionAnimation.Instance.Set(enemy.PlayableObject.gameObject, enemy.PlayableObject.gameObject.transform.position,pos);
+//            enemy.PlayableObject.gameObject.transform.position = pos;
         }
+        PlayableMovePostionAnimation.Instance.Start(PlayableMovePostionAnimation.ActionType.Player);
         foreach (var player in PlayableCharacterManager.Instance.PlayerGoalList)
         {
             PlayableCharacterManager.Instance.SetRelocation(player);
         }
-        PlayableCharacterManager.Instance.UpdateRestart();
+//        PlayableCharacterManager.Instance.UpdateRestart();
     }
 
     public void SetMovePlayableIconForEnemy()

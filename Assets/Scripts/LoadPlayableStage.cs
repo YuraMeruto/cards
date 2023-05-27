@@ -32,8 +32,8 @@ public class LoadPlayableStage
         LoadGoHomePlayable(bulletPrefab, 0,false,6,1.1f);
         LoadGoHomePlayable(bulletPrefab, -1, false, 6, 2f);
         // エネミー
-        LoadMobEnemyPlaybale(bulletPrefab, 0, true, 1.5f, 1.1f);
-        LoadMobEnemyPlaybale(bulletPrefab, -1, true, 1.5f, 2f);
+        LoadKendoClubPlaybale(bulletPrefab, 0, true, 1.5f, 1.1f);
+        LoadKendoClubPlaybale(bulletPrefab, -1, true, 1.5f, 2f);
     }
 
     static void LoadGoHomePlayable(GameObject bulletPrefab,float pos_y,bool is_enemy,float r_location,float init_pos_x)
@@ -42,9 +42,9 @@ public class LoadPlayableStage
 
         var pos = PlayableCharacterManager.Instance.GoalPos;
         pos.x = PlayableCharacterManager.Instance.GoalPos.x / init_pos_x;
-//        pos.y = pos_y;
-        pos.z = 10;
+        pos.z = ConstValues.PLAYABKE_POS_Z;
         var screen_pos = Camera.main.ScreenToWorldPoint(pos);
+        screen_pos.z = ConstValues.PLAYABKE_POS_Z;
         if (pos_y != 0)
         {
             screen_pos.y += pos_y;
@@ -61,13 +61,14 @@ public class LoadPlayableStage
         PlayableCharacterManager.Instance.Add(instance, a);
     }
 
-    static void LoadMobEnemyPlaybale(GameObject bulletPrefab, float pos_y,bool is_enemy,float r_location,float init_pos_x)
+    static void LoadKendoClubPlaybale(GameObject bulletPrefab, float pos_y,bool is_enemy,float r_location,float init_pos_x)
     {
         var instance = MonoBehaviour.Instantiate(bulletPrefab);
         var pos = PlayableCharacterManager.Instance.GoalPos;
         pos.x = PlayableCharacterManager.Instance.GoalPos.x / init_pos_x;
-        pos.z = 10;
+        pos.z = ConstValues.PLAYABKE_POS_Z;
         var screen_pos = Camera.main.ScreenToWorldPoint(pos);
+        screen_pos.z = ConstValues.PLAYABKE_POS_Z;
         if (pos_y != 0)
         {
             screen_pos.y += pos_y;
@@ -78,7 +79,7 @@ public class LoadPlayableStage
             instance.tag = TagManager.ENEMY;
             instance.transform.position = ConvertPos(instance.transform.position);
         }
-        PlayableCharacterIcon e = new PlayableCharacterIcon();
+        KendoClub e = new KendoClub();
         e.Ini(instance, r_location);
         e.IsEnemy = is_enemy;
         PlayableCharacterManager.Instance.Add(instance, e);

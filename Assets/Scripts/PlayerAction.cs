@@ -19,10 +19,6 @@ public class PlayerAction
 
     public void Update()
     {
-        if (TurnManager.TurnStatus != TurnManager.Turn.Player)
-        {
-            return;
-        }
         if (!is_update)
         {
             return;
@@ -35,6 +31,8 @@ public class PlayerAction
 
             if (hit2d)
             {
+                Debug.Log(hit2d.transform.gameObject);
+
                 clickedGameObject = hit2d.transform.gameObject;
                 switch (action_satus)
                 {
@@ -87,6 +85,11 @@ public class PlayerAction
 
     private void hitCard(GameObject obj)
     {
+        if (TurnManager.TurnStatus != TurnManager.Turn.Player)
+        {
+            return;
+        }
+
         CardManager.AttachCard(obj);
         if (CardManager.AttachCards.Count != 2)
         {

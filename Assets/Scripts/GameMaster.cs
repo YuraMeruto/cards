@@ -30,7 +30,7 @@ public class GameMaster : MonoBehaviour
     {
         update_list.Update();
         animation_update_list.Update();
-//        Debug.Log("GameUpdate");
+        DebugMethod();
     }
 
 
@@ -83,5 +83,34 @@ public class GameMaster : MonoBehaviour
         DrawBattleUI draw_battle_ui = new DrawBattleUI();
         draw_battle_ui.Ini();
         update_list.Add(draw_battle_ui);
+
+        CommonSeManager.Ini();
+
+        var turn = new TurnTextAnimation();
+        turn.Ini();
+        update_list.Add(turn);
+
+        var playable_move_postion_animation = new PlayableMovePostionAnimation();
+        playable_move_postion_animation.Ini();
+        update_list.Add(playable_move_postion_animation);
+    }
+
+    void DebugMethod()
+    {
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            Debug.LogWarning(TurnManager.TurnStatus);
+            Debug.LogWarning(PlayerManager.InstancePlayerManger.PlayerAction.Status);
+            Debug.LogWarning(PlayerManager.InstancePlayerManger.PlayerAction.IsUpdate);
+        }
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            foreach (var val in PlayableSeManager.VoiceList)
+            {
+                Debug.LogWarning(val.Key);
+                Debug.LogWarning(val.Value);
+
+            }
+        }
     }
 }

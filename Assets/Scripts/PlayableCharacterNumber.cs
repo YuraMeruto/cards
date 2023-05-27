@@ -7,5 +7,6 @@ public class PlayableCharacterNumber
     public enum Number
     {
         GoHomeClub = 1,
+        KendoClub = 2,
     }
 }

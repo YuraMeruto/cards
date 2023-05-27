@@ -28,16 +28,18 @@ public class UIManager
         enemy_status = new EnemyStatus();
         enemy_status.Text = GameObject.Find(ConstValues.ENEMY_HP_OBJECT_NAME).GetComponent<Text>();
         var p = Vector3.zero;
-        p.x = 770;
-        p.y = 40f;
+        p.x = 811;
+        p.y = 10.1f;
         p.z = 100;
+        enemy_status.Text.GetComponent<RectTransform>().anchoredPosition = p;
+
 
         enemy_status.Slider = GameObject.Find(ConstValues.ENEMY_HP_GAGE_OBJECT_NAME).GetComponent<Slider>();
         enemy_status.Slider.maxValue = enemy_hp;
         enemy_status.setHp(enemy_hp);
         p = Vector3.zero;
-        p.x = 593.3f;
-        p.y = 36.5f;
+        p.x = 844.3f;
+        p.y = 10.1f;
         p.z = 100;
         enemy_status.Slider.GetComponent<RectTransform>().anchoredPosition = p;
 
@@ -46,8 +48,8 @@ public class UIManager
         player_status = new PlayerStatus();
         player_status.Text = GameObject.Find(ConstValues.PLAYER_HP_OBJECT_NAME).GetComponent<Text>();
         p = Vector3.zero;
-        p.x = 130f;
-        p.y = 40f;
+        p.x = 98;
+        p.y = 10.1f;
         p.z = 100;
         player_status.Text.GetComponent<RectTransform>().anchoredPosition = p;
 
@@ -55,8 +57,8 @@ public class UIManager
         player_status.Slider.maxValue = player_hp;
         player_status.setHp(player_hp);
         p = Vector3.zero;
-        p.x = 200;
-        p.y = 30;
+        p.x = 277;
+        p.y = 1.1f;
         p.z = 100;
         player_status.Slider.GetComponent<RectTransform>().anchoredPosition = p;
  

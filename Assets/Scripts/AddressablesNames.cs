@@ -16,6 +16,7 @@ public class AddressablesNames
     public const string FRONT_QUEEN = "Assets/Images/queen.png";
     public const string FRONT_KING = "Assets/Images/king.png";
     public const string GOHOME_ICON = "Images/ReImages/GohomeIcon.png";
+    public const string KENDO_CLUB_ICON = "ReImages/KendoClub.jpg";
 
 
     // prefabŠÖ˜A

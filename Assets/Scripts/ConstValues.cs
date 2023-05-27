@@ -14,14 +14,29 @@ public class ConstValues
     public const string GO_HOME_CLUB_ATTACK_04 = "SE/TestSe04.mp3";
     public const string GO_HOME_CLUB_ATTACK_05 = "SE/TestSe05.mp3";
     public const string GO_HOME_CLUB_DRAW_BATTLE = "SE/TestSe06.mp3";
+    // 剣道部のボイス
+    public const string KENDO_CLUB_ATTACK_01 = "SE/TestSe01.mp3";
+    public const string KENDO_CLUB_ATTACK_02 = "SE/TestSe02.mp3";
+    public const string KENDO_CLUB_ATTACK_03 = "SE/TestSe03.mp3";
+    public const string KENDO_CLUB_ATTACK_04 = "SE/TestSe04.mp3";
+    public const string KENDO_CLUB_ATTACK_05 = "SE/TestSe05.mp3";
+    public const string KENDO_CLUB_DRAW_BATTLE = "SE/TestSe06.mp3";
 
-    // 帰宅部のボイスの管理す値
+
+    // 帰宅部のボイスの管理する値
     public const int GO_HOME_CLUB_ATTACK_01_VALUE = 1;
     public const int GO_HOME_CLUB_ATTACK_02_VALUE = 2;
     public const int GO_HOME_CLUB_ATTACK_03_VALUE = 3;
     public const int GO_HOME_CLUB_ATTACK_04_VALUE = 4;
     public const int GO_HOME_CLUB_ATTACK_05_VALUE = 5;
     public const int GO_HOME_CLUB_DRAW_BATTLE_VALUE = 6;
+    // 剣道部のボイスの管理する値
+    public const int KENDO_CLUB_ATTACK_01_VALUE = 7;
+    public const int KENDO_CLUB_ATTACK_02_VALUE = 8;
+    public const int KENDO_CLUB_ATTACK_03_VALUE = 9;
+    public const int KENDO_CLUB_ATTACK_04_VALUE = 10;
+    public const int KENDO_CLUB_ATTACK_05_VALUE = 11;
+    public const int KENDO_CLUB_DRAW_BATTLE_VALUE = 12;
 
     // ステージ
     public const int FIRST_STAGE = 1;
@@ -37,4 +52,14 @@ public class ConstValues
     public const string PLAYER_HP_OBJECT_NAME = "PlayerHp";
     public const string PLYAER_HP_GAGE_OBJECT_NAME = "PlayerHpGage";
     public const string FINISH_TEXT_OBJECT_NAME = "FinishText";
+
+    // ポジション関連
+    public const int PLAYABKE_POS_Z = 20;
+
+    // 共通SE関連
+    public const string DRAW_BATTLE_RESULT_WIN = "SE/TestSe08.mp3";
+    public const string DRAW_BATTLE_RESULT_LOSE = "SE/TestSe09.mp3";
+
+    // 共通SEの値
+    public const int DRAW_BATTLE_RESULT_WIN_VALUE = 1;
 }

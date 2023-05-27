@@ -185,6 +185,36 @@ MonoBehaviour:
     m_SerializedLabels:
     - default
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1854623b4c1cc63409fdd80d55350be9
+    m_Address: ReImages/KendoClub.jpg
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 164c37cd6a901284883e0f881cf31a50
+    m_Address: SE/TestSe07.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e49842f9b57a04f49b9af427eb02a527
+    m_Address: SE/TestSe08.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 49368211060305c40aa920354b70c6da
+    m_Address: SE/TestSe09.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 28de30b01bbb3f2489d56a66dcac1793
+    m_Address: SE/TestSe10.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 50b807ac8774fda4687d466a8d096c72, type: 2}
   m_SchemaSet:

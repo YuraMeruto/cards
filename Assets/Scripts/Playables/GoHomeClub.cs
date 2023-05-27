@@ -36,6 +36,5 @@ public class GoHomeClub : PlayableCharacterIcon
     {
         AudioSource.clip = PlayableSeManager.VoiceList[draw_battle_succesess_se];
         AudioSource.Play();
-
     }
 }

@@ -9,6 +9,7 @@ public class TurnManager : UpdateBase
         None,
         Player,
         Enemy,
+        Draw,
     }
     static Turn turn;
     public static Turn TurnStatus { get { return turn; } set { turn = value; } }
@@ -114,6 +115,11 @@ public class TurnManager : UpdateBase
             hp = 0;
         }
         UIManager.Instance.PlayerStatus.setHp(hp);
+        foreach (var val in PlayableCharacterManager.Instance.ActionPlayableList)
+        {
+            val.AttackSe();
+        }
+
         var addhp = new AddHpTextAnimation();
         addhp.Ini((int)card_number + 1, true, false);
         BattleManager.Instance.SetMovePlayableIcon();

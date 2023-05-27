@@ -15,7 +15,7 @@ public class BattleCalucation : MonoBehaviour
     }
     public static int ResultCalucation(CardManager.Number number, int remaining_hp,bool is_enmey,bool is_combo_update = false)
     {
-        if(is_enmey == instance.is_enemy_turn)
+        if(is_enmey != instance.is_enemy_turn)
         {
             instance.is_enemy_turn = is_enmey;
             instance.ResetCombo();

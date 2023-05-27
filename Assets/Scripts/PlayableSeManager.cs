@@ -12,8 +12,11 @@ public class PlayableSeManager
     {
         switch (character_number)
         {
-            case PlayableCharacterNumber.Number.GoHomeClub:
+            case PlayableCharacterNumber.Number.KendoClub:
                 LoadGoHomeVoice();
+                break;
+            case PlayableCharacterNumber.Number.GoHomeClub:
+                LoadKendoVoice();
                 break;
         }
     }
@@ -27,6 +30,16 @@ public class PlayableSeManager
         LoadClip(ConstValues.GO_HOME_CLUB_ATTACK_04_VALUE, ConstValues.GO_HOME_CLUB_ATTACK_04);
         LoadClip(ConstValues.GO_HOME_CLUB_ATTACK_05_VALUE, ConstValues.GO_HOME_CLUB_ATTACK_05);
         LoadClip(ConstValues.GO_HOME_CLUB_DRAW_BATTLE_VALUE, ConstValues.GO_HOME_CLUB_DRAW_BATTLE);
+    }
+    static void LoadKendoVoice()
+    {
+        LoadClip(ConstValues.KENDO_CLUB_ATTACK_01_VALUE, ConstValues.KENDO_CLUB_ATTACK_01);
+        LoadClip(ConstValues.KENDO_CLUB_ATTACK_02_VALUE, ConstValues.KENDO_CLUB_ATTACK_02);
+        LoadClip(ConstValues.KENDO_CLUB_ATTACK_03_VALUE, ConstValues.KENDO_CLUB_ATTACK_03);
+        LoadClip(ConstValues.KENDO_CLUB_ATTACK_04_VALUE, ConstValues.KENDO_CLUB_ATTACK_04);
+        LoadClip(ConstValues.KENDO_CLUB_ATTACK_05_VALUE, ConstValues.KENDO_CLUB_ATTACK_05);
+        LoadClip(ConstValues.KENDO_CLUB_DRAW_BATTLE_VALUE, ConstValues.KENDO_CLUB_DRAW_BATTLE);
+
     }
 
     static void LoadClip(int number,string address_name)
