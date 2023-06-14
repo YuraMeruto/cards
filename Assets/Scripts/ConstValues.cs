@@ -62,4 +62,11 @@ public class ConstValues
 
     // ‹¤’ÊSE‚Ì’l
     public const int DRAW_BATTLE_RESULT_WIN_VALUE = 1;
+
+    // ƒV[ƒ“–¼
+    public const string BATTLE_SCENE = "Battle";
+
+    // ‰æ‘œ‚Ìİ’è”»’è
+    public const int NONE_SPRITE_VALUE = -1;
+
 }

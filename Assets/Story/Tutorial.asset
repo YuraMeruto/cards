@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8c998991d718ed41a3c09b898ec7dc0, type: 3}
+  m_Name: Tutorial
+  m_EditorClassIdentifier: 
+  list:
+  - serif_message: 3
+    left_character_sprite_number: 100
+    left_character_type: 1
+    right_character_sprite_number: -1
+    right_character_type: 0
+    center_character_sprite_number: -1
+    center_character_type: 1
+    back_ground_sprite_number: 10
+    serif_voice: {fileID: 0}
+    serif_character_type: 1
+  - serif_message: 2
+    left_character_sprite_number: 0
+    left_character_type: 0
+    right_character_sprite_number: 200
+    right_character_type: 2
+    center_character_sprite_number: 0
+    center_character_type: 0
+    back_ground_sprite_number: 0
+    serif_voice: {fileID: 0}
+    serif_character_type: 0
+  - serif_message: 1
+    left_character_sprite_number: 100
+    left_character_type: 1
+    right_character_sprite_number: 0
+    right_character_type: 0
+    center_character_sprite_number: 0
+    center_character_type: 0
+    back_ground_sprite_number: 0
+    serif_voice: {fileID: 0}
+    serif_character_type: 0
+  - serif_message: "\u30D0\u30C8\u30EB\u30B9\u30BF\u30FC\u30C8"
+    left_character_sprite_number: -1
+    left_character_type: 0
+    right_character_sprite_number: -1
+    right_character_type: 0
+    center_character_sprite_number: -1
+    center_character_type: 0
+    back_ground_sprite_number: 0
+    serif_voice: {fileID: 0}
+    serif_character_type: 0

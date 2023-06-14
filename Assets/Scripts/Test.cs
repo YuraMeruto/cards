@@ -8,7 +8,7 @@ using UnityEngine.AddressableAssets;
 public class Test : MonoBehaviour
 {
     [SerializeField]
-    SpriteRenderer r;
+    Image r;
     void Start()
     {
 

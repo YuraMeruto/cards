@@ -27,4 +27,7 @@ public class AddressablesNames
     public const string TARGET_ICON_LIST = "Assets/Prefabs/target_icon.prefab";
     public const string HIT_POINT_TEXT_PREFAB = "Prefabs/HitPointText.prefab";
     public const string BACK_PREFAB = "Prefabs/back.prefab";
+
+    // シナリオ関連
+    public const string TUTORIAL_STORY = "/Story/Tutorial.asset";
 }
