@@ -73,6 +73,9 @@ public class PlayableMovePostionAnimation : UpdateBase
             case ActionType.Player:
                 PlayableCharacterManager.Instance.UpdateRestart();
                 break;
+            case ActionType.Enemy:
+                PlayableCharacterManager.Instance.UpdateRestart();
+                break;
         }
 
     }

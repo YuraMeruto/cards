@@ -231,13 +231,15 @@ public class DrawBattleManager
             var pos = player.PlayableObject.gameObject.transform.position;
             pos.x = back_value;
             BattleManager.Instance.SetSwoonStatus(player);
-            player.PlayableObject.gameObject.transform.position = pos;
+            PlayableMovePostionAnimation.Instance.Set(player.PlayableObject.gameObject, player.PlayableObject.gameObject.transform.position, pos);
+ //          player.PlayableObject.gameObject.transform.position = pos;
         }
+        PlayableMovePostionAnimation.Instance.Start(PlayableMovePostionAnimation.ActionType.Enemy);
         foreach (var enemy in PlayableCharacterManager.Instance.EnemyGoalList)
         {
             PlayableCharacterManager.Instance.SetRelocation(enemy);
         }
-        PlayableCharacterManager.Instance.UpdateRestart();
+//        PlayableCharacterManager.Instance.UpdateRestart();
 
     }
 }

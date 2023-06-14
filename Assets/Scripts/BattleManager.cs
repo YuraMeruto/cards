@@ -73,7 +73,9 @@ public class BattleManager
             pos.x = Utill.GetOutField(target.IsEnemy);
             SetTargetSwoonStatus();
         }
-        target.PlayableObject.gameObject.transform.position = pos;
+        PlayableMovePostionAnimation.Instance.Set(target.PlayableObject, target.PlayableObject.transform.position, pos);
+        PlayableMovePostionAnimation.Instance.Start(PlayableMovePostionAnimation.ActionType.Player);
+//        target.PlayableObject.gameObject.transform.position = pos;
     }
 
     public void Destorytaret()

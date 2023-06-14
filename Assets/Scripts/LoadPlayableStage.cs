@@ -32,8 +32,8 @@ public class LoadPlayableStage
         LoadGoHomePlayable(bulletPrefab, 0,false,6,1.1f);
         LoadGoHomePlayable(bulletPrefab, -1, false, 6, 2f);
         // エネミー
-        LoadKendoClubPlaybale(bulletPrefab, 0, true, 1.5f, 1.1f);
-        LoadKendoClubPlaybale(bulletPrefab, -1, true, 1.5f, 2f);
+        LoadKendoClubPlaybale(bulletPrefab, 0, true, 1.5f, 1.2f);
+        LoadKendoClubPlaybale(bulletPrefab, -1, true, 1.5f, 2.1f);
     }
 
     static void LoadGoHomePlayable(GameObject bulletPrefab,float pos_y,bool is_enemy,float r_location,float init_pos_x)
