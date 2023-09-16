@@ -19,8 +19,14 @@ public class EnemyAction
     {
         if (!is_update)
         {
+            Debug.Log("エネミー行動停止中");
             return;
         }
+        if (StartCountAnimationManager.IsAnimation)
+        {
+            return;
+        }
+        Debug.Log("EnmeyActionUpdate");
         update_time -= Time.deltaTime;
         if(update_time >= 0)
         {

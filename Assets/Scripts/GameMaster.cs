@@ -16,6 +16,8 @@ public class GameMaster : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+//        Screen.SetResolution(1280, 960, FullScreenMode.Windowed, 60);
+        Debug.LogWarning(Screen.width);
         Ini();
         Debug.Log("GameStart");
         game_master_obj = this.gameObject;
@@ -54,7 +56,7 @@ public class GameMaster : MonoBehaviour
 
         TurnManager turn_manager = new TurnManager();
         update_list.Add(turn_manager);
-        TurnManager.TurnStatus = TurnManager.Turn.Player;
+        TurnManager.TurnStatus = TurnManager.Turn.None;
         turn_manager.Ini();
 
         PlayableCharacterManager playablemanager = new PlayableCharacterManager();
@@ -93,6 +95,11 @@ public class GameMaster : MonoBehaviour
         var playable_move_postion_animation = new PlayableMovePostionAnimation();
         playable_move_postion_animation.Ini();
         update_list.Add(playable_move_postion_animation);
+
+        var chain_text = new ChainTextAnimation();
+        chain_text.Ini();
+        update_list.Add(chain_text);
+
     }
 
     void DebugMethod()

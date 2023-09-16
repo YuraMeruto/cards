@@ -38,7 +38,7 @@ public class DrawBattleManager
         {
             while (true)
             {
-                var no = UnityEngine.Random.Range(0, (int)CardManager.Number.King);
+                var no = Random.Range(0, (int)CardManager.Number.King);
                 if (instance_list.IndexOf((CardManager.Number)no) < 0)
                 {
                     instance_list.Add((CardManager.Number)no);
@@ -55,8 +55,8 @@ public class DrawBattleManager
         instance_pos.y = Screen.height / 1.5f;
 
         var scale = Vector3.zero;
-        scale.x = 1;
-        scale.y = 1;
+        scale.x = 0.5f;
+        scale.y = 0.5f;
         scale.z = 1;
 
         instance_pos.z = ConstValues.PLAYABKE_POS_Z;

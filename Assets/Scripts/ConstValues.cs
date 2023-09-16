@@ -6,6 +6,7 @@ public class ConstValues
 {
     public const float DEFAULT_SWOON_TIME = 3;
     public const int SWOON_UPDATE_COLOR_ALPHA = 2;
+    public const float DEFAULT_MOVE_SPEED = 10.0f;
 
     // 帰宅部のボイス
     public const string GO_HOME_CLUB_ATTACK_01 = "SE/TestSe01.mp3";
@@ -69,4 +70,6 @@ public class ConstValues
     // 画像の設定判定
     public const int NONE_SPRITE_VALUE = -1;
 
+    public const int SERIF_SPLIT_SIZE = 9;
+    public const int SERIF_SPLIT_SIZE_FOR_WINDOW = 18;
 }

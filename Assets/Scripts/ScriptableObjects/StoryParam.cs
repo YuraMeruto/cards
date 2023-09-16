@@ -5,6 +5,9 @@ using UnityEngine;
 public class StoryParam
 {
     public string serif_message;
+    public string left_serif_message;
+    public string center_serif_message;
+    public string right_serif_message;
     public int left_character_sprite_number;
     public ScenarioIconManager.CharacterType left_character_type;
     public int right_character_sprite_number;

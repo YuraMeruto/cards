@@ -92,8 +92,6 @@ public class PlayableCharacterManager : UpdateBase
             DrawAction();
             TurnManager.TurnStatus = TurnManager.Turn.Draw;
             TurnTextAnimation.Instance.Start(TurnManager.TurnStatus);
-
-
         }
         // 行動開始
         // プレイヤーの行動
@@ -109,7 +107,7 @@ public class PlayableCharacterManager : UpdateBase
             PlayerManager.InstancePlayerManger.updateSet(true);
             TurnManager.TurnStatus = TurnManager.Turn.Player;
             TurnTextAnimation.Instance.Start(TurnManager.TurnStatus);
-            CardManager.OnEffectCard();
+//            CardManager.OnEffectCard();
         }
         else if (enemy_goal_list.Count != 0)
         {
@@ -119,6 +117,7 @@ public class PlayableCharacterManager : UpdateBase
             }
             Debug.LogWarning("エネミーアクション");
             is_update = false;
+            Debug.Log("えねみーtrue3");
             EnemyManager.InstanceEnemyManager.updateSet(true);
             TurnManager.TurnStatus = TurnManager.Turn.Enemy;
             TurnTextAnimation.Instance.Start(TurnManager.TurnStatus);
@@ -164,7 +163,6 @@ public class PlayableCharacterManager : UpdateBase
     {
         Debug.Log("DrawAction");
         PlayerManager.InstancePlayerManger.PlayerAction.Status = PlayerAction.ActionStatus.DrawCardSelect;
-        DrawBattleManager.Instance.InstanceDrawCards();
     }
 
     // Relocation　再配置
@@ -218,6 +216,7 @@ public class PlayableCharacterManager : UpdateBase
 
     public void UpdateRestart()
     {
+        Debug.Log("aaaaa");
         enemy_goal_list.Clear();
         player_goal_list.Clear();
         action_playable_list.Clear();

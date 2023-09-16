@@ -71,7 +71,24 @@ public class TurnTextAnimation : UpdateBase
             player_text.text = "";
             turn_text.text = "";
             is_update = false;
+            NextAction();
+        }
+    }
 
+    void NextAction()
+    {
+        switch (TurnManager.TurnStatus)
+        {
+            case TurnManager.Turn.Draw:
+                DrawBattleManager.Instance.InstanceDrawCards();
+                break;
+            case TurnManager.Turn.Player:
+                Debug.Log("Player");
+                CardManager.OnEffectCard();
+                break;
+            case TurnManager.Turn.Enemy:
+                CardManager.OnEffectCard();
+                break;
         }
     }
 

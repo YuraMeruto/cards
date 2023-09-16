@@ -8,24 +8,25 @@ public class StartCountAnimationManager
 {
     static bool is_animation = true;
     public static bool IsAnimation { get { return is_animation; } set { is_animation = value; } }
-
+    static StartCountAnimation start_count_animation;
     public static void startAnimationInstance()
     {
-        if (!is_animation)
-        {
-            return;
-        }
-        is_animation = false;
-
+        is_animation = true;
 
 
         var count_text = GameObject.Find(ConstValues.START_COUNT_TECT_OBJECT_NAME);
 
         count_text.SetActive(true);
-        StartCountAnimation s = new StartCountAnimation();
-        s.Ini(count_text.GetComponent<Text>(), 1.5f, 3);
-        GameMaster.GameMasterClass.animationUpdateList.Add(count_text, s);
-
+        if (start_count_animation == null)
+        {
+            StartCountAnimation start_count_animation = new StartCountAnimation();
+            start_count_animation.Ini(count_text.GetComponent<Text>(), 1.5f, 3);
+            GameMaster.GameMasterClass.animationUpdateList.Add(count_text, start_count_animation);
+        }
+        else
+        {
+            start_count_animation.Reset();
+        }
         return;
     }
 }

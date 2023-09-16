@@ -32,6 +32,7 @@ public class PlayableMovePostionAnimation : UpdateBase
 
     public void Start(ActionType type)
     {
+        Debug.Log("hogehoge"+type);
         enable_time = 0.0f;
         is_update = true;
         action_type = type;
@@ -68,15 +69,25 @@ public class PlayableMovePostionAnimation : UpdateBase
 
     void NextAction()
     {
-        switch (action_type)
-        {
-            case ActionType.Player:
-                PlayableCharacterManager.Instance.UpdateRestart();
-                break;
-            case ActionType.Enemy:
-                PlayableCharacterManager.Instance.UpdateRestart();
-                break;
-        }
+        Debug.Log("aiueo"+action_type);
 
+        if (TurnManager.TurnStatus == TurnManager.Turn.Draw)
+        {
+            PlayableCharacterManager.Instance.UpdateRestart();
+        }
+        else
+        {
+            switch (action_type)
+            {
+                case ActionType.Player:
+                    ChainTextAnimation.Instance.Start(TurnManager.Turn.Enemy);
+                    break;
+                case ActionType.Enemy:
+                    ChainTextAnimation.Instance.Start(TurnManager.Turn.Player);
+                    Debug.Log("Ç¶ÇÀÇ›Å[true1");
+                    EnemyManager.InstanceEnemyManager.updateSet(true);
+                    break;
+            }
+        }
     }
 }

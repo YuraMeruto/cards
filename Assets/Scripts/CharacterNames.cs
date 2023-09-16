@@ -9,6 +9,8 @@ public class CharacterNames
         None,
         GoHome,
         Kendo,
+        BaseBall,
+        Unknow,
     }
 
     public static string GetName(Character c)
@@ -19,7 +21,10 @@ public class CharacterNames
                 return "‹A‘î•”";
             case Character.Kendo:
                 return "Œ•“¹•”";
-                break;
+            case Character.BaseBall:
+                return "–ì‹…•”";
+            case Character.Unknow:
+                return "???";
         }
         return "";
     }

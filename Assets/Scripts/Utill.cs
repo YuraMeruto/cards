@@ -12,7 +12,7 @@ public class Utill
     public static Vector3 FowardObj(Vector3 pos, bool is_enemy)
     {
         var p = pos;
-        var add = Time.deltaTime * 4.0f;
+        var add = Time.deltaTime * 4.0f* ConstValues.DEFAULT_MOVE_SPEED;
         if (!is_enemy)
         {
             p.x += add;

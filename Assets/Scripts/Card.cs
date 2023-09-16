@@ -12,7 +12,7 @@ public class Card
 
     public GameObject GameObject { get { return game_obj; } }
 
-    public void Ini(CardManager.Number num, GameObject obj, CardManager.ShowStatus showStatus)
+    public void Ini(CardManager.Number num, GameObject obj, CardManager.ShowStatus showStatus,bool is_partical_active = false)
     {
         number = num;
         sprite_render = obj.GetComponent<SpriteRenderer>();
@@ -25,6 +25,7 @@ public class Card
                 particle_object = child.gameObject;
             }
         }
+        SetActiveRightEffect(is_partical_active);
     }
 
     public void ChangeShowStatus()
@@ -34,13 +35,13 @@ public class Card
         {
             show_status = CardManager.ShowStatus.Back;
             load_sprite_name = AddressablesNames.BACK_SPRITE;
-            particle_object.SetActive(true);
+//            particle_object.SetActive(true);
         }
         else
         {
             show_status = CardManager.ShowStatus.Front;
             load_sprite_name = CardManager.GetCardSpriteFront(number);
-            particle_object.SetActive(false);
+//            particle_object.SetActive(false);
         }
 
         // カードのオブジェクト生成

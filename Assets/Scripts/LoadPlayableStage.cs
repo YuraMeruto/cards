@@ -28,6 +28,7 @@ public class LoadPlayableStage
         // 非同期での処理について終了を待つ
         var bulletPrefab = bulletPrefabHundle.WaitForCompletion();
 
+        // プレイアブルオブジェクトで生成できるようにするー
         // プレイヤー
         LoadGoHomePlayable(bulletPrefab, 0,false,6,1.1f);
         LoadGoHomePlayable(bulletPrefab, -1, false, 6, 2f);

@@ -239,6 +239,30 @@ MonoBehaviour:
     m_SerializedLabels:
     - default
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 828d6ade8e997d74a9e70e859670f157
+    m_Address: CutIn/GoHome/Test01.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7fbc95409e9b0f34f815e5b2214640d3
+    m_Address: CutIn/GoHome/Test02.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 578324f43b2c3aa488eb568dc44c4d83
+    m_Address: BackGround/Test1.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6c4340b7a91a4364d9013b092af68997
+    m_Address: BackGround/Test2.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 50b807ac8774fda4687d466a8d096c72, type: 2}
   m_SchemaSet:

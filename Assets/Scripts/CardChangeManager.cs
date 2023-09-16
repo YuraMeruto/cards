@@ -19,6 +19,7 @@ public class CardChangeManager
         instance.card_list_count--;
         if(instance.card_list_count == 0 && TurnManager.TurnStatus == TurnManager.Turn.Enemy)
         {
+            Debug.Log("‚¦‚Ë‚İ[true2");
             EnemyManager.InstanceEnemyManager.updateSet(true);
         }
     }

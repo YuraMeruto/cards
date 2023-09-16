@@ -74,8 +74,15 @@ public class BattleManager
             SetTargetSwoonStatus();
         }
         PlayableMovePostionAnimation.Instance.Set(target.PlayableObject, target.PlayableObject.transform.position, pos);
-        PlayableMovePostionAnimation.Instance.Start(PlayableMovePostionAnimation.ActionType.Player);
-//        target.PlayableObject.gameObject.transform.position = pos;
+        if (!target.IsEnemy)
+        {
+            PlayableMovePostionAnimation.Instance.Start(PlayableMovePostionAnimation.ActionType.Player);
+        }
+        else
+        {
+            PlayableMovePostionAnimation.Instance.Start(PlayableMovePostionAnimation.ActionType.Enemy);
+        }
+        //        target.PlayableObject.gameObject.transform.position = pos;
     }
 
     public void Destorytaret()

@@ -16,7 +16,6 @@ public class TextAnimation : MonoBehaviour
     float const_speed = 2000;
     float wait_finish_time = 0.5f;
 
-
     // Start is called before the first frame update
     void Start()
     {

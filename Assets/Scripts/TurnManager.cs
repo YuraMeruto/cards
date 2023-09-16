@@ -11,7 +11,7 @@ public class TurnManager : UpdateBase
         Enemy,
         Draw,
     }
-    static Turn turn;
+    static Turn turn = Turn.None;
     public static Turn TurnStatus { get { return turn; } set { turn = value; } }
     static TurnManager turn_manger;
     public static TurnManager Instance { get { return turn_manger; } }

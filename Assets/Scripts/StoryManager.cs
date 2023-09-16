@@ -14,6 +14,7 @@ public class StoryManager
     public int Index { get { return index; } }
     Image left_image;
     Image right_image;
+    Image center_image;
     Image back_groud_image;
 
     Text serif_charater_name_text;
@@ -26,6 +27,8 @@ public class StoryManager
         instance = this;
         left_image = GameObject.Find("LeftCharacterImage").GetComponent<Image>();
         right_image = GameObject.Find("RightCharacterImage").GetComponent<Image>();
+        center_image = GameObject.Find("CenterCharacterImage").GetComponent<Image>();
+
         back_groud_image = GameObject.Find("BackGroundImage").GetComponent<Image>();
         serif_charater_name_text = GameObject.Find("SerifCharacterNameText").GetComponent<Text>();
     }
@@ -90,10 +93,29 @@ public class StoryManager
             right_image.color = Color.white;
             right_image.sprite = ScenarioIconManager.SpriteList[story.list[index].right_character_sprite_number];
         }
+
+        if (story.list[index].center_character_sprite_number == ConstValues.NONE_SPRITE_VALUE)
+        {
+            center_image.sprite = null;
+            center_image.color = Color.clear;
+        }
+        else if (story.list[index].center_character_sprite_number != 0)
+        {
+            center_image.color = Color.white;
+            center_image.sprite = ScenarioIconManager.SpriteList[story.list[index].center_character_sprite_number];
+        }
+
+
+        // îwåi
         if (story.list[index].back_ground_sprite_number != 0)
         {
             back_groud_image.sprite = ScenarioIconManager.SpriteList[story.list[index].back_ground_sprite_number];
         }
+        SetSpritesForSerifImage();
+    }
+
+    void SetSpritesForSerifImage()
+    {
 
     }
 

@@ -9,7 +9,7 @@ using System.Linq;
 
 public class CardManager
 {
-    const int INSTANT_COUNT = 4;
+    const int INSTANT_COUNT = 2;
     const int INSTANCE_TYPE = 2;
     public enum Number {
         Ace,
@@ -40,11 +40,12 @@ public class CardManager
     public static Dictionary<int,Card> AttachedCards { get { return attached_cards; } set { attached_cards = value; } }
     public static void InstanceCards()
     {
+
         attached_cards.Clear();
         game_object_list.Clear();
         var instance_list = new List<Number>();
         // 出すカードの種類を決める
-        for (var instance_type = 0; instance_type <= INSTANCE_TYPE; instance_type++)
+        for (var instance_type = 0; instance_type < INSTANCE_TYPE; instance_type++)
         {
             while (true)
             {
@@ -169,9 +170,12 @@ public class CardManager
         destoryAttachCards();
         if (game_object_list.Count == 0)
         {
+            Debug.Log("現在のたーん"+ TurnManager.TurnStatus);
             if (TurnManager.TurnStatus == TurnManager.Turn.Enemy)
             {
+                Debug.Log("エネミーターン終了");
                 EnemyManager.InstanceEnemyManager.updateSet(false);
+                EnemyManager.InstanceEnemyManager.updateSetEnemyTargetAction(false);
             }
             InstanceCards();
         }

@@ -21,10 +21,14 @@ public class EnemyTargetAction
         {
             return;
         }
+        if (CardManager.GameObjectList.Count == 0)
+        {
+            return;
+        }
+        Debug.Log("EnmeyTargetActionUpdate");
         DecideTargetPlayable();
         TurnManager.Instance.EnemyBattle(CardManager.AttachCards[0].CardType);
         is_update = false;
-
         EnemyManager.InstanceEnemyManager.updateSet(true);
         TurnManager.TurnStatus = TurnManager.Turn.Enemy;
     }
