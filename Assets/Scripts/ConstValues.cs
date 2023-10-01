@@ -72,4 +72,39 @@ public class ConstValues
 
     public const int SERIF_SPLIT_SIZE = 9;
     public const int SERIF_SPLIT_SIZE_FOR_WINDOW = 18;
+
+    // 帰宅部のエフェクトの管理する値
+    public const int GO_HOME_CLUB_ATTACK_EFFECT_01_VALUE = 1;
+    public const int GO_HOME_CLUB_ATTACK_EFFECT_02_VALUE = 2;
+    public const int GO_HOME_CLUB_ATTACK_EFFECT_03_VALUE = 3;
+    public const int GO_HOME_CLUB_ATTACK_EFFECT_04_VALUE = 4;
+    public const int GO_HOME_CLUB_ATTACK_EFFECT_05_VALUE = 5;
+    public const int GO_HOME_CLUB_DRAW_EFFECT_BATTLE_VALUE = 6;
+
+
+    // 帰宅部のエフェクトオブジェクト
+    public const string GO_HOME_CLUB_EFFECT_ATTACK_01 = "Prefabs/Effect/GoHome/GoHomeEffect01.prefab";
+    public const string GO_HOME_CLUB_EFFECT_ATTACK_02 = "Prefabs/Effect/GoHome/GoHomeEffect02.prefab";
+    public const string GO_HOME_CLUB_EFFECT_ATTACK_03 = "Prefabs/Effect/GoHome/GoHomeEffect03.prefab";
+    public const string GO_HOME_CLUB_EFFECT_ATTACK_04 = "Prefabs/Effect/GoHome/GoHomeEffect04.prefab";
+    public const string GO_HOME_CLUB_EFFECT_ATTACK_05 = "Prefabs/Effect/GoHome/GoHomeEffect05.prefab";
+    public const string GO_HOME_CLUB_DRAW_EFFECT_BATTLE = "Prefabs/Effect/GoHome/GoHomeEffectDraw.prefab";
+
+
+    // 剣道部のエフェクトの管理する値
+    public const int KENDO_CLUB_EFFECT_ATTACK_01_VALUE = 7;
+    public const int KENDO_CLUB_EFFECT_ATTACK_02_VALUE = 8;
+    public const int KENDO_CLUB_EFFECT_ATTACK_03_VALUE = 9;
+    public const int KENDO_CLUB_EFFECT_ATTACK_04_VALUE = 10;
+    public const int KENDO_CLUB_EFFECT_ATTACK_05_VALUE = 11;
+    public const int KENDO_CLUB_DRAW_BATTLE_EFFECT_VALUE = 12;
+
+    // 剣道部のエフェクトオブジェクト
+    public const string KENDO_CLUB_EFFECT_ATTACK_01 = "Prefabs/Effect/KendoClub/KendoClubEffect01.prefab";
+    public const string KENDO_CLUB_EFFECT_ATTACK_02 = "Prefabs/Effect/KendoClub/KendoClubEffect02.prefab";
+    public const string KENDO_CLUB_EFFECT_ATTACK_03 = "Prefabs/Effect/KendoClub/KendoClubEffect03.prefab";
+    public const string KENDO_CLUB_EFFECT_ATTACK_04 = "Prefabs/Effect/KendoClub/KendoClubEffect04.prefab";
+    public const string KENDO_CLUB_EFFECT_ATTACK_05 = "Prefabs/Effect/KendoClub/KendoClubEffect05.prefab";
+    public const string KENDO_CLUB_DRAW_BATTLE_EFFECT = "Prefabs/Effect/KendoClub/KendoClubEffectDraw.prefab";
+
 }

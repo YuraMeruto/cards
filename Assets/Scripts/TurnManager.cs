@@ -91,6 +91,7 @@ public class TurnManager : UpdateBase
         foreach (var val in PlayableCharacterManager.Instance.ActionPlayableList)
         {
             val.AttackSe();
+            val.AttackEffect();
         }
 
         var addhp = new AddHpTextAnimation();
@@ -118,6 +119,7 @@ public class TurnManager : UpdateBase
         foreach (var val in PlayableCharacterManager.Instance.ActionPlayableList)
         {
             val.AttackSe();
+            val.AttackEffect();
         }
 
         var addhp = new AddHpTextAnimation();

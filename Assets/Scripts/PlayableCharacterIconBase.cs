@@ -18,6 +18,13 @@ abstract public class PlayableCharacterIconBase
     protected int attack_se_03 = 0;
     protected int attack_se_04 = 0;
     protected int attack_se_05 = 0;
+
+    protected int attack_effect_01 = 0;
+    protected int attack_effect_02 = 0;
+    protected int attack_effect_03 = 0;
+    protected int attack_effect_04 = 0;
+    protected int attack_effect_05 = 0;
+
     protected int draw_battle_succesess_se = 0;
 
     public AudioSource AudioSource { get { return audio_source; } set { audio_source = value; } }
@@ -35,12 +42,22 @@ abstract public class PlayableCharacterIconBase
     public virtual int AttackSe04 { get { return attack_se_04; } set { attack_se_04 = value; } }
     public virtual int AttackSe05 { get { return attack_se_05; } set { attack_se_05 = value; } }
 
+    public virtual int AttackEffect01 { get { return attack_effect_01; } set { attack_effect_01 = value; } }
+    public virtual int AttackEffect02 { get { return attack_effect_02; } set { attack_effect_02 = value; } }
+    public virtual int AttackEffect03 { get { return attack_effect_03; } set { attack_effect_03 = value; } }
+    public virtual int AttackEffect04 { get { return attack_effect_04; } set { attack_effect_04 = value; } }
+    public virtual int AttackEffect05 { get { return attack_effect_05; } set { attack_effect_05 = value; } }
+
+
     public virtual int DrawBattleSuccesessSe { get { return draw_battle_succesess_se; } set { draw_battle_succesess_se = value; } }
 
     abstract public void Update();
 
     abstract public void AttackSe();
     abstract public void DrawBattleSe();
+
+    abstract public void AttackEffect();
+
     public virtual int SettingComboSe()
     {
         var combo = BattleCalucation.Instance.Combo;
@@ -63,4 +80,28 @@ abstract public class PlayableCharacterIconBase
         }
         return 0;
     }
+
+    public virtual int SettingComboEffect()
+    {
+        var combo = BattleCalucation.Instance.Combo;
+        if (combo >= 5)
+        {
+            combo = 5;
+        }
+        switch (combo)
+        {
+            case 1:
+                return AttackEffect01;
+            case 2:
+                return AttackEffect02;
+            case 3:
+                return AttackEffect03;
+            case 4:
+                return AttackEffect04;
+            case 5:
+                return AttackEffect05;
+        }
+        return 0;
+    }
+
 }

@@ -14,6 +14,7 @@ public class KendoClub : PlayableCharacterIcon
         AttackSe04 = ConstValues.KENDO_CLUB_ATTACK_04_VALUE;
         AttackSe05 = ConstValues.KENDO_CLUB_ATTACK_05_VALUE;
         DrawBattleSuccesessSe = ConstValues.KENDO_CLUB_DRAW_BATTLE_VALUE;
+
         var load_sprite = Addressables.LoadAssetAsync<Sprite>(AddressablesNames.KENDO_CLUB_ICON);
         // ”ñ“¯Šú‚Å‚Ìˆ—‚É‚Â‚¢‚ÄI—¹‚ğ‘Ò‚Â
         var s = load_sprite.WaitForCompletion();
@@ -33,6 +34,11 @@ public class KendoClub : PlayableCharacterIcon
     {
         AudioSource.clip = PlayableSeManager.VoiceList[draw_battle_succesess_se];
         AudioSource.Play();
+    }
+
+    public override void AttackEffect()
+    {
+
     }
 
 }

@@ -263,6 +263,18 @@ MonoBehaviour:
     m_SerializedLabels:
     - default
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b2528bc9a03a259439d32c1feb15b3d9
+    m_Address: Prefabs/Effect/GoHome/GoHomeEffect01.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2b213c70c0d640c44877c54c190fa1ee
+    m_Address: Prefabs/Effect/GoHome/GoHomeEffect02.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 50b807ac8774fda4687d466a8d096c72, type: 2}
   m_SchemaSet:

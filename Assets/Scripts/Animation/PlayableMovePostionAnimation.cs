@@ -81,11 +81,12 @@ public class PlayableMovePostionAnimation : UpdateBase
             {
                 case ActionType.Player:
                     ChainTextAnimation.Instance.Start(TurnManager.Turn.Enemy);
+                    Debug.Log("Ç¶ÇÀÇ›Å[true1");
+                    EnemyManager.InstanceEnemyManager.updateSet(true);
+
                     break;
                 case ActionType.Enemy:
                     ChainTextAnimation.Instance.Start(TurnManager.Turn.Player);
-                    Debug.Log("Ç¶ÇÀÇ›Å[true1");
-                    EnemyManager.InstanceEnemyManager.updateSet(true);
                     break;
             }
         }

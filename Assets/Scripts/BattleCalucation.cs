@@ -24,7 +24,14 @@ public class BattleCalucation : MonoBehaviour
         {
             instance.combo++;
         }
-        remaining_hp = remaining_hp - ((int)number + 1) * instance.combo;
+        Debug.Log("ƒRƒ“ƒ{‰ÁŽZ");
+        if (instance.combo != 0) {
+            remaining_hp = remaining_hp - ((int)number + 1) * instance.combo;
+        }
+        else
+        {
+            instance.combo = 1;
+        }
         return remaining_hp;
     }
 
@@ -39,6 +46,6 @@ public class BattleCalucation : MonoBehaviour
     
     void ResetCombo()
     {
-        combo = 1;
+        combo = 0;
     }
 }

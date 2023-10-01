@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class GameMaster : MonoBehaviour
 {
+    bool is_update = true;
+    public bool IsUpdate { get { return is_update; } set { is_update = value; } }
     static GameObject game_master_obj;
     static GameMaster game_master;
     UpdateList update_list = new UpdateList();
@@ -119,5 +121,16 @@ public class GameMaster : MonoBehaviour
 
             }
         }
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            Debug.Log("E‚ð‰Ÿ‚µ‚½");
+            foreach (var val in PlayableEffectManager.EffectList)
+            {
+                Debug.LogWarning(val.Key);
+                Debug.LogWarning(val.Value);
+
+            }
+        }
+
     }
 }

@@ -80,4 +80,9 @@ public class PlayableCharacterIcon :PlayableCharacterIconBase
     {
         Debug.Log("PlayeableC" + AttackSe01 + ":::" + game_object.GetInstanceID());
     }
+
+    public override void AttackEffect()
+    {
+        Debug.Log("PlayeableC" + AttackSe01 + ":::" + game_object.GetInstanceID());
+    }
 }
